@@ -1,0 +1,7 @@
+.vscode
+Build
+Library
+Logs
+Assets/ThridPackage/*
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
