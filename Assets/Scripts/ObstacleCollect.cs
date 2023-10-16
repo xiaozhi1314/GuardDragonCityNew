@@ -25,6 +25,8 @@ public class ObstacleCollect : MonoBehaviour
             obstacle.Add(new RVO.Vector2(maxX, minZ));
             Simulator.Instance.addObstacle(obstacle);
         }
+        
+        Simulator.Instance.processObstacles();
     }
 
 }

@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class RVOAgent : MonoBehaviour
 {
+    public Common.AIAction targetAIAction;
     public int sid = -1;
     public int type;
     public Vector3 target = Vector3.zero;
@@ -55,26 +56,26 @@ public class RVOAgent : MonoBehaviour
         // 非攻击状态移动
         moveSolider();
 
-        // 到达目标更新状态
-        checkSoliderAtkDis();
+        // // 到达目标更新状态
+        // checkSoliderAtkDis();
 
-        if(actionState == 2){
-            if(curCd >= atkCd){
-                // 攻击目标
-                attackSolider();
-            }else{
-                curCd += Time.deltaTime;
-            }
-        }
+        // if(actionState == 2){
+        //     if(curCd >= atkCd){
+        //         // 攻击目标
+        //         attackSolider();
+        //     }else{
+        //         curCd += Time.deltaTime;
+        //     }
+        // }
 
-        // 寻找目标
-        findAttackSolider();
+        // // 寻找目标
+        // findAttackSolider();
 
-        // 更新自身状态
-        upDateSoliderState();
+        // // 更新自身状态
+        // upDateSoliderState();
 
-        // 更新目标状态
-        upDateTargetSoliderState();
+        // // 更新目标状态
+        // upDateTargetSoliderState();
     }
 
     bool isSoliderDead(){

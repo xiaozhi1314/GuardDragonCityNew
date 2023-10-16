@@ -14,12 +14,11 @@ public class RVOManager : MonoBehaviour
     void Start()
     {
         Simulator.Instance.setTimeStep(0.25f);
-        Simulator.Instance.setAgentDefaults(10.0f, 10, 5.0f, 5.0f, 2.0f, 2.0f, new RVO.Vector2(0.0f, 0.0f));
-        Simulator.Instance.processObstacles();
+        Simulator.Instance.setAgentDefaults(10.0f, 10, 5.0f, 5.0f, 1.0f, 2.0f, new RVO.Vector2(0.0f, 0.0f));
 
         DOTween.Sequence().AppendInterval(2.0f).AppendCallback(() =>{
             CreateSolider();
-        }).SetLoops(10);
+        }).SetLoops(1);
     }
 
     // Update is called once per frame
