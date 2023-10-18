@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/ThirdPackage/Battle Arena - Cartoon Assets/Materials/Character03Material.mat.meta
+guid: b82ac93c4e2400346a15d7eeec0a79aa
+========
+guid: 1528fd46e6d314ad381d6f0c072caa33
+timeCreated: 1453724282
+licenseType: Store
+>>>>>>>> 912a230251c6798af0af4260a108351939206701:Assets/ThirdPackage/AstarPathfindingProject/ExampleScenes/Example14_TurnBased_Hexagon/Animations/Door.controller.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
