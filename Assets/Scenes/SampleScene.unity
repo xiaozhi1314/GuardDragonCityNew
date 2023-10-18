@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrTableNames:
-  - TableMasteer
+  - TableMaster
   _mapTableNames: []
 --- !u!114 &1040837443
 MonoBehaviour:
