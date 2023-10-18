@@ -1,0 +1,5 @@
+[
+  {"ID":1,"Desc":"我方主基地","Name":"我方","Attack":100,"Def":100,"HP":10000,"CRT":1,"ATR":1,"PrefabIndex":0},
+  {"ID":2,"Desc":"地方主基地","Name":"敌方","Attack":100,"Def":100,"HP":10000,"CRT":1,"ATR":1,"PrefabIndex":0},
+  {"ID":3,"Desc":"普通怪物","Name":"小怪物","Attack":1000,"Def":1,"HP":1,"CRT":1,"ATR":1,"PrefabIndex":1}
+]
