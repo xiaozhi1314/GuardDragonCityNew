@@ -37,3 +37,37 @@ public class Common
         public RVOAgent targetRVOAgent;
     }
 }
+
+
+public class PlayerInfoData
+{
+    /// <summary>
+    /// ??
+    /// </summary>
+    public int Index ;
+
+    /// <summary>
+    /// ??
+    /// </summary>
+    public string Name;
+
+    /// <summary>
+    /// ??
+    /// </summary>
+    public int Score;
+
+    /// <summary>
+    /// ??
+    /// </summary>
+    public string HeadIcon;
+
+    
+    public PlayerInfoData(int index,string name,int score,string headIcon)
+    {
+        Index = index;
+        Name = name;
+        Score = score;  
+        HeadIcon = headIcon;    
+    }
+
+}

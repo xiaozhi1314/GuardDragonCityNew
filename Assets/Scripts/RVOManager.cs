@@ -25,11 +25,11 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
             if (index % 2 == 0)
             {
                 CreateSolider(redPrefab, Common.CampType.Red, Common.CampType.Bule);
-                // CreateSolider(bluePrefab, Common.CampType.Bule, Common.CampType.Red);
+                CreateSolider(bluePrefab, Common.CampType.Bule, Common.CampType.Red);
             }
             else
             {
-                // CreateSolider(bluePrefab, Common.CampType.Bule, Common.CampType.Red);
+                CreateSolider(bluePrefab, Common.CampType.Bule, Common.CampType.Red);
                 CreateSolider(redPrefab, Common.CampType.Red, Common.CampType.Bule);
             }
 
