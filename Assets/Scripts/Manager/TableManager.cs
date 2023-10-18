@@ -21,18 +21,15 @@ public class TableManager : MonoSingleton<TableManager>
     
     public override void Init()
     {
-        GFuncs.SLog("TableManager Init");
+       
         
         _arrTableNames = new List <string>
         {
             "TableMaster"
         };
         _mapTableNames = new List<string>();
-        
-        InitJsonTableData();
 
-       var temp = GetArrayData<TableMasterData>(1);
-       
+        InitJsonTableData();
     }
     
     private void InitJsonTableData()
@@ -54,7 +51,7 @@ public class TableManager : MonoSingleton<TableManager>
                 _arrDatas[type][(int)content["ID"]] = data;
             }
 
-            GFuncs.SLog("[TABLE]" + jsonName + ".json Init Success!");
+           
             
         }
         
@@ -67,7 +64,6 @@ public class TableManager : MonoSingleton<TableManager>
             var data = JsonConvert.DeserializeObject(jsonText, type);
             _mapDatas[type] = data;
 
-            GFuncs.SLog("[TABLE]" + jsonName + ".json Init Success!");
         }
 
     }

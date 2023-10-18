@@ -10,6 +10,9 @@ namespace BigDream
         public override void Init()
         {
 
+
+           var temp  = TableManager.Instance.GetArrayData<TableMasterData>(1);
+           var i = 1;
         }
 
         /// <summary>
