@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1447969372556020970}
   - component: {fileID: 1447969372556020969}
   - component: {fileID: 1447969372556020968}
+  - component: {fileID: 252546851651253494}
   m_Layer: 0
   m_Name: LeftCastle
   m_TagString: Untagged
@@ -97,3 +98,32 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &252546851651253494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447969372556020975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f0d12edb440604bbad211587149e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameData:
+    TargetType: 0
+    CampType: 1
+    EmtpyCampType: 0
+    Sid: -1
+    HP: 30
+    MaxHp: 30
+    Atk: 1
+    AtkCd: 0.5
+    AtkDis: 5
+    FindDis: 10
+    FindCD: 0.5
+    ActionType: 0
+    TargetAgent: {fileID: 0}
+  m_IsDie: 0
+  curAttackTime: 0
+  curFindTime: 0

@@ -1,0 +1,87 @@
+{
+    "Solider": {
+        "HP" : 2,
+        "MaxHp" : 2,
+        "Atk" : 2,
+        "AtkCd" : 0.5,
+        "AtkDis" : 4.0,
+        "FindDis" : 15.0,
+        "FindCD" : 0.1,
+        "Speed" : 1.0,
+        "Name" : "小小兵"
+    },
+    "Builder": {
+        "HP":  10000,
+        "MaxHp":  10000,
+        "Atk":  160,
+        "AtkCd":  1.5,
+        "AtkDis":  35.0,
+        "FindDis":  10.0,
+        "FindCD":  1.5,
+        "Name" : "超级城堡"
+    },
+    "GiftSolider":[
+        {
+            "HP" : 30,
+            "MaxHp" : 30,
+            "Atk" : 5,
+            "AtkCd" : 0.5,
+            "AtkDis" : 4.0,
+            "FindDis" : 15.0,
+            "FindCD" : 0.1,
+            "Speed" : 1.0,
+            "Name" : "仙女棒"
+        },
+        {
+            "HP" : 150,
+            "MaxHp" : 150,
+            "Atk" : 13,
+            "AtkCd" : 0.5,
+            "AtkDis" : 4.0,
+            "FindDis" : 15.0,
+            "FindCD" : 0.1,
+            "Speed" : 1.0,
+            "Name" : "魔法镜"
+        },{
+            "HP" : 200,
+            "MaxHp" : 200,
+            "Atk" : 30,
+            "AtkCd" : 0.5,
+            "AtkDis" : 4.0,
+            "FindDis" : 15.0,
+            "FindCD" : 0.1,
+            "Speed" : 1.0,
+            "Name" : "能量电池"
+        },{
+            "HP" : 300,
+            "MaxHp" : 300,
+            "Atk" : 50,
+            "AtkCd" : 0.5,
+            "AtkDis" : 8.0,
+            "FindDis" : 15.0,
+            "FindCD" : 0.1,
+            "Speed" : 1.0,
+            "Name" : "恶魔炸弹"
+        },{
+            "HP" : 500,
+            "MaxHp" : 500,
+            "Atk" : 80,
+            "AtkCd" : 0.5,
+            "AtkDis" : 12.0,
+            "FindDis" : 15.0,
+            "FindCD" : 0.1,
+            "Speed" : 1.0,
+            "Name" : "神秘空投"
+        },{
+            "HP" : 1000,
+            "MaxHp" : 1000,
+            "Atk" : 100,
+            "AtkCd" : 0.5,
+            "AtkDis" : 16.0,
+            "FindDis" : 15.0,
+            "FindCD" : 0.1,
+            "Speed" : 1.0,
+            "Name" : "超能喷射"
+        }
+    ]
+}

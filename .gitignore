@@ -2,6 +2,7 @@
 Build
 Library
 Logs
+Temp
 Assets/ThridPackage/*
 Assembly-CSharp.csproj
 Assembly-CSharp-Editor.csproj

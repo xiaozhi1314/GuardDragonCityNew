@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3021152525402126511}
   - component: {fileID: 3021152525402126504}
   - component: {fileID: 3021152525402126505}
-  - component: {fileID: -8778160006012246608}
+  - component: {fileID: 6868230255268318459}
   m_Layer: 0
   m_Name: LeftSolider
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-8778160006012246608
+--- !u!114 &6868230255268318459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,17 +93,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 3021152525402126507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f38296202fe0b41aa2aeb620aeb3d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d11e2b1e5951cf4aa44a44f6ed0d889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sid: -1
-  type: 0
-  target: {x: 0, y: 0, z: 0}
-  targetType: 0
-  targetSid: -1
-  targetAgent: {fileID: 0}
-  leftCastle: {fileID: 1447969372556020971, guid: b3937431f8148e74da075f79c193d72f, type: 3}
-  rightCastle: {fileID: 8403527980733485528, guid: d7fa290721992d546a348a798b481177, type: 3}
-  isDead: 0
-  hp: 0
-  actionState: 0
+  m_GameData:
+    TargetType: 0
+    CampType: 1
+    EmtpyCampType: 0
+    Sid: -1
+    HP: 30
+    MaxHp: 30
+    Atk: 1
+    AtkCd: 0.5
+    AtkDis: 5
+    FindDis: 10
+    FindCD: 0.5
+    ActionType: 0
+    TargetAgent: {fileID: 0}
+  m_IsDie: 0
+  curAttackTime: 0
+  curFindTime: 0
