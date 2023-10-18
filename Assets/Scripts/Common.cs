@@ -24,6 +24,8 @@ public class Common
         Red,
         Bule,
     }
+
+
     public enum ActionType{
         Find,
         Move,
@@ -36,4 +38,44 @@ public class Common
         public ActionType type;
         public RVOAgent targetRVOAgent;
     }
+
+    /// <summary>
+    /// 消息通知类型
+    /// </summary>
+    public enum EventCmd
+    {
+        None,
+        AddMaster,
+    }
+
+    /// <summary>
+    /// 初始化怪物数据
+    /// </summary>
+    public class MasterData
+    {
+
+        /// <summary>
+        /// 怪物ID
+        /// </summary>
+        public int ID;
+
+        /// <summary>
+        /// 阵营
+        /// </summary>
+        public CampType CampType;
+
+        /// <summary>
+        /// 怪物类型
+        /// </summary>
+        public TargetType TargetType;
+
+        /// <summary>
+        /// 数量
+        /// </summary>
+        /// <returns></returns>
+        public int Count;
+
+
+    }
+
 }
