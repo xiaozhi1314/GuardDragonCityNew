@@ -3,6 +3,6 @@ Build
 Library
 Logs
 Temp
-
+*.csproj
 Assembly-CSharp.csproj
 Assembly-CSharp-Editor.csproj

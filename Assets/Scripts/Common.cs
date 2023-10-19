@@ -25,6 +25,7 @@ public class Common
         Bule,
     }
 
+
     public enum ActionType{
         Find,
         Move,
@@ -36,6 +37,46 @@ public class Common
         public CampType camp;
         public ActionType type;
         public RVOAgent targetRVOAgent;
+    }
+
+
+    /// <summary>
+    /// ÏûÏ¢Í¨ÖªÀàÐÍ
+    /// </summary>
+    public enum EventCmd
+    {
+        None,
+        AddMaster,
+    }
+
+    /// <summary>
+    /// ³õÊ¼»¯¹ÖÎïÊý¾Ý
+    /// </summary>
+    public class MasterData
+    {
+
+        /// <summary>
+        /// ¹ÖÎïID
+        /// </summary>
+        public int ID;
+
+        /// <summary>
+        /// ÕóÓª
+        /// </summary>
+        public CampType CampType;
+
+        /// <summary>
+        /// ¹ÖÎïÀàÐÍ
+        /// </summary>
+        public TargetType TargetType;
+
+        /// <summary>
+        /// ÊýÁ¿
+        /// </summary>
+        /// <returns></returns>
+        public int Count;
+
+
     }
 }
 
@@ -69,44 +110,5 @@ public class PlayerInfoData
         Name = name;
         Score = score;  
         HeadIcon = headIcon;    
-    }
-
-    /// <summary>
-    /// ï¿½ï¿½Ï¢Í¨Öªï¿½ï¿½ï¿½ï¿½
-    /// </summary>
-    public enum EventCmd
-    {
-        None,
-        AddMaster,
-    }
-
-    /// <summary>
-    /// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    /// </summary>
-    public class MasterData
-    {
-
-        /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½ID
-        /// </summary>
-        public int ID;
-
-        /// <summary>
-        /// ï¿½ï¿½Óª
-        /// </summary>
-        public CampType CampType;
-
-        /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-        /// </summary>
-        public TargetType TargetType;
-
-        /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½
-        /// </summary>
-        /// <returns></returns>
-        public int Count;
-
-
     }
 }
