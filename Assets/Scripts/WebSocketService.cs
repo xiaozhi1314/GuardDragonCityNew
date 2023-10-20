@@ -3,6 +3,8 @@ using UnityEngine;
 using BestHTTP.WebSocket;
 using BigDream;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 public class WebSocketService : MonoSingleton<WebSocketService>
 {
@@ -26,11 +28,18 @@ public class WebSocketService : MonoSingleton<WebSocketService>
     
     private void OnWebSocketMessage(WebSocket ws, string msg){
         if(msg != null){
-            WebSocketProtocal gameMsg = JsonUtility.FromJson<WebSocketProtocal>(msg);
-            if(gameMsg == null || gameMsg.data[0].code == 0){
+            GameMsg gameMsg = JsonUtility.FromJson<GameMsg>(msg);
+            if(gameMsg == null || gameMsg.code == 0){
                 return;
             }
-            RVOManager.Instance.CreateBigSolider(gameMsg.data[0].type, gameMsg.data[0].subtype);
+            // RVOManager.Instance.CreateBigSolider(gameMsg.data[0].type, gameMsg.data[0].subtype);
+
+            var masterData = new Common.MasterData();
+            masterData.ID = gameMsg.subtype;
+            masterData.CampType = (gameMsg.type == 1 ? Common.CampType.Red : Common.CampType.Bule);
+            masterData.Count = 2;
+            var objs = new Dictionary<string, object>() { { "Data", JsonConvert.SerializeObject(masterData) } };
+            EventManager.Instance.Fire(Common.EventCmd.AddSolider, new EventParams(Common.EventCmd.AddSolider, objs));
             // switch(gameMsg.data[0].type){
             //     case 0:
             //         RVOManager.Instance.CreateBigSolider(gameMsg.data[0].type, gameMsg.data[0].subtype);

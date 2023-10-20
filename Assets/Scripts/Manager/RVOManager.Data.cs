@@ -85,38 +85,46 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
         gameData.Sid = sid;
         gameData.TargetAgent = argetAgent;
 
-        if (targetType == Common.TargetType.Solider)
-        {
-            gameData.HP = gameConfig.Solider.HP;
-            gameData.MaxHp = gameConfig.Solider.MaxHp;
-            gameData.Atk = gameConfig.Solider.Atk;
-            gameData.AtkCd = gameConfig.Solider.AtkCd;
-            gameData.AtkDis = gameConfig.Solider.AtkDis;
-            gameData.FindDis = gameConfig.Solider.FindDis;
-            gameData.FindCD = gameConfig.Solider.FindCD;
-        }
-        else if (targetType == Common.TargetType.BigSolider)
-        {
-            gameData.HP = gameConfig.GiftSolider[index].HP;
-            gameData.MaxHp = gameConfig.GiftSolider[index].MaxHp;
-            gameData.Atk = gameConfig.GiftSolider[index].Atk;
-            gameData.AtkCd = gameConfig.GiftSolider[index].AtkCd;
-            gameData.AtkDis = gameConfig.GiftSolider[index].AtkDis;
-            gameData.FindDis = gameConfig.GiftSolider[index].FindDis;
-            gameData.FindCD = gameConfig.GiftSolider[index].FindCD;
+        var tableMasterData  = TableManager.Instance.GetArrayData<TableMasterData>(index);
+        gameData.HP = tableMasterData.HP;
+        gameData.MaxHp = tableMasterData.MaxHP;
+        gameData.Atk = tableMasterData.Atk;
+        gameData.AtkCd = tableMasterData.AtkCD;
+        gameData.AtkDis = tableMasterData.AtkDis;
+        gameData.FindDis = tableMasterData.FindDis;
+        gameData.FindCD = tableMasterData.FindCD;
+        // if (targetType == Common.TargetType.Solider)
+        // {
+        //     gameData.HP = gameConfig.Solider.HP;
+        //     gameData.MaxHp = gameConfig.Solider.MaxHp;
+        //     gameData.Atk = gameConfig.Solider.Atk;
+        //     gameData.AtkCd = gameConfig.Solider.AtkCd;
+        //     gameData.AtkDis = gameConfig.Solider.AtkDis;
+        //     gameData.FindDis = gameConfig.Solider.FindDis;
+        //     gameData.FindCD = gameConfig.Solider.FindCD;
+        // }
+        // else if (targetType == Common.TargetType.BigSolider)
+        // {
+        //     gameData.HP = gameConfig.GiftSolider[index].HP;
+        //     gameData.MaxHp = gameConfig.GiftSolider[index].MaxHp;
+        //     gameData.Atk = gameConfig.GiftSolider[index].Atk;
+        //     gameData.AtkCd = gameConfig.GiftSolider[index].AtkCd;
+        //     gameData.AtkDis = gameConfig.GiftSolider[index].AtkDis;
+        //     gameData.FindDis = gameConfig.GiftSolider[index].FindDis;
+        //     gameData.FindCD = gameConfig.GiftSolider[index].FindCD;
 
-        }
-        else if (targetType == Common.TargetType.Build)
-        {
-            gameData.HP = gameConfig.Builder.HP;
-            gameData.MaxHp = gameConfig.Builder.MaxHp;
-            gameData.Atk = gameConfig.Builder.Atk;
-            gameData.AtkCd = gameConfig.Builder.AtkCd;
-            gameData.AtkDis = gameConfig.Builder.AtkDis;
-            gameData.FindDis = gameConfig.Builder.FindDis;
-            gameData.FindCD = gameConfig.Builder.FindCD;
+        // }
+        // else if (targetType == Common.TargetType.Build)
+        // {
+        //     gameData.HP = gameConfig.Builder.HP;
+        //     gameData.MaxHp = gameConfig.Builder.MaxHp;
+        //     gameData.Atk = gameConfig.Builder.Atk;
+        //     gameData.AtkCd = gameConfig.Builder.AtkCd;
+        //     gameData.AtkDis = gameConfig.Builder.AtkDis;
+        //     gameData.FindDis = gameConfig.Builder.FindDis;
+        //     gameData.FindCD = gameConfig.Builder.FindCD;
 
-        }
+        // }
         return gameData;
     }
 

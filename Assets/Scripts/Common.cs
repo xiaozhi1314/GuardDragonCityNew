@@ -47,6 +47,8 @@ public class Common
     {
         None,
         AddMaster,
+        AddSolider,
+        AddBigSolider,
     }
 
     /// <summary>

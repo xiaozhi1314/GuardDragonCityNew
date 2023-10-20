@@ -1,47 +1,25 @@
 public class TableMasterData : CTableData
 {
-    /// <summary>
-    /// 怪物数据表中的ID
-    /// </summary>
+    // 怪物数制表ID
     public int ID;
-
-    /// <summary>
-    /// 描述
-    /// </summary>
+    // 描述
     public string Desc;
-
-    /// <summary>
-    /// 怪物名字
-    /// </summary>
-    public string Name;
-
-    /// <summary>
-    /// 攻击力
-    /// </summary>
-    public int Attack;
-
-    /// <summary>
-    /// 防御力
-    /// </summary>
-    public int Def;
-
-    /// <summary>
-    /// 怪物血量
-    /// </summary>
-    public int HP;
-
-    /// <summary>
-    /// 闪避率
-    /// </summary>
-    public int CRT;
-
-    /// <summary>
-    /// 命中率
-    /// </summary>
-    public int ATR;
-
-    /// <summary>
-    /// 预制体下表
-    /// </summary>
-    public int PrefabIndex;
+    // 血量
+    public float HP;
+    // 最大血量
+    public float MaxHP;
+    // 攻击力
+    public float Atk;
+    // 攻击冷却时间
+    public float AtkCD;
+    // 攻击距离
+    public float AtkDis;
+    // 查找距离
+    public float FindDis;
+    // 查找冷却时间
+    public float FindCD;
+    // 速度
+    public float Speed;
+    // 预设路径
+    public string PrefabPath;
 }
