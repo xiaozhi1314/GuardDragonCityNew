@@ -833,41 +833,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2b8f05579d0664bb28bb364282126c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redPrefab: {fileID: 9208066750448849796, guid: d58d63e13a9043444a8ad3f5df80003f, type: 3}
-  bluePrefab: {fileID: 2061289877041845067, guid: cd3f911983a2a024282a37c70ebefcad, type: 3}
   RedBuildAgent: {fileID: 3900852436596750573}
   BlueBuildAgent: {fileID: 3900852438044930752}
-  GameState: 0
-  gameConfig:
-    Solider:
-      TargetType: 0
-      CampType: 1
-      EmtpyCampType: 0
-      Sid: -1
-      HP: 30
-      MaxHp: 30
-      Atk: 1
-      AtkCd: 0.5
-      AtkDis: 5
-      FindDis: 10
-      FindCD: 0.5
-      ActionType: 0
-      TargetAgent: {fileID: 0}
-    Builder:
-      TargetType: 0
-      CampType: 1
-      EmtpyCampType: 0
-      Sid: -1
-      HP: 30
-      MaxHp: 30
-      Atk: 1
-      AtkCd: 0.5
-      AtkDis: 5
-      FindDis: 10
-      FindCD: 0.5
-      ActionType: 0
-      TargetAgent: {fileID: 0}
-    GiftSolider: []
 --- !u!114 &1040837440
 MonoBehaviour:
   m_ObjectHideFlags: 0

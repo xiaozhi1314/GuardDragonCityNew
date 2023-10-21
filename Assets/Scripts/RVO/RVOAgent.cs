@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using BigDream;
 using DG.Tweening.Plugins.Options;
 using RVO;
 using Unity.VisualScripting;
@@ -61,7 +62,8 @@ public class RVOAgent : MonoBehaviour
 
     void LateUpdate()
     {
-        if (RVOManager.Instance.GameState != Common.GameState.Playing) return;
+        if (GameManager.Instance.GameState != Common.GameState.Playing) return;
+        if (m_IsDie) return;
         Proc();
         
     }
