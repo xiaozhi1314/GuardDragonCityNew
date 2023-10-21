@@ -26,7 +26,7 @@ namespace BigDream
             TableManager.Instance.GetArrayDatasGroup<TableMasterData>().Values.ToList().ForEach(masterDataObject =>
             {
                 var masterData = (TableMasterData)masterDataObject;
-                if (masterData.ID > 3)
+                if (masterData.ID >= 3)
                 {
                     PoolManager.Instance.SetPoolGameObject(masterData.PoolName, Resources.Load<GameObject>(masterData.PrefabPath));
                 }
