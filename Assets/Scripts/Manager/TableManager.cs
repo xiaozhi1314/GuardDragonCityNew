@@ -27,7 +27,10 @@ public class TableManager : MonoSingleton<TableManager>
         {
             "TableMaster"
         };
-        _mapTableNames = new List<string>();
+        _mapTableNames = new List<string>
+        {
+
+        };
 
         InitJsonTableData();
     }
