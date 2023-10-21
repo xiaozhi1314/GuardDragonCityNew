@@ -22,4 +22,6 @@ public class TableMasterData : CTableData
     public float Speed;
     // 预设路径
     public string PrefabPath;
+    // 对象池中的名字
+    public string PoolName;
 }

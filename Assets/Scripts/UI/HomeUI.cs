@@ -1,6 +1,9 @@
+using System;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,20 +13,22 @@ public class HomeUI : MonoBehaviour
     /// <summary>
     /// 我方hp
     /// </summary>
-    public Image ownHpSlider;
+    public Slider redHpSlider;
+
+    public TextMeshProUGUI redHpText;
     
     /// <summary>
     /// 敌方血量
     /// </summary>
-    public Slider enemyHpSlider;
+    public Slider buleHpSlider;
+    public TextMeshProUGUI buleHpText;
 
 
     /// <summary>
     /// 克隆我方信息
     /// </summary>
     public PlayerInfo cloneOwnPlayerInfo;
-
-
+     
     /// <summary>
     /// 克隆敌方信息
     /// </summary>
@@ -31,7 +36,7 @@ public class HomeUI : MonoBehaviour
 
 
     private Dictionary<Common.CampType, List<PlayerInfo>> playerInfoDic;
-
+    
 
     public void Start()
     {
@@ -49,8 +54,26 @@ public class HomeUI : MonoBehaviour
         SetPlayerInfo(playerInfoData3, Common.CampeType.Enemy);*/
 
         EventManager.Instance.Subscribe(Common.EventCmd.SubBuildHp, this, SubBuildHpCallBack);
-
         EventManager.Instance.Subscribe(Common.EventCmd.RankUpdate, this, RankUpdateCallBack);
+        
+       var redData =  TableManager.Instance.GetArrayData<TableMasterData>(1);
+       var blueData =  TableManager.Instance.GetArrayData<TableMasterData>(1);
+       EventManager.Instance.Fire(Common.EventCmd.SubBuildHp, new EventParams(Common.EventCmd.SubBuildHp, new Dictionary<string, object>()
+       {
+           {"CampType", Common.CampType.Red},
+           {"Hp", redData.HP},
+           {"MaxHp", redData.MaxHP},
+           {"isAction", false},
+       }));
+       
+       EventManager.Instance.Fire(Common.EventCmd.SubBuildHp, new EventParams(Common.EventCmd.SubBuildHp, new Dictionary<string, object>()
+       {
+           {"CampType", Common.CampType.Bule},
+           {"Hp", blueData.HP},
+           {"MaxHp", blueData.MaxHP},
+           {"isAction", false},
+       }));
+       
     }
 
     /// <summary>
@@ -61,10 +84,20 @@ public class HomeUI : MonoBehaviour
     /// <param name="e"></param>
     private void SubBuildHpCallBack(object sender = null, object userData = null, EventParams e = null)
     {
-        if (e != null && e.Objects.ContainsKey("Data"))
+        if (e != null && e.Objects.ContainsKey("CampType"))
         {
-            var masterData = JsonConvert.DeserializeObject<Common.MasterData>((string)e.Objects["Data"]);
-
+            var campType = (Common.CampType)e.Objects["CampType"];
+            var curHp = (float)e.Objects["Hp"];
+            var maxHp = (float)e.Objects["MaxHp"];
+            var iaAction = (bool)e.Objects["isAction"];
+            if (campType == Common.CampType.Red)
+            {
+                UpdateHpInfo(redHpSlider, redHpText, Convert.ToInt32(curHp), Convert.ToInt32(maxHp), iaAction);
+            }
+            else
+            {
+                UpdateHpInfo(buleHpSlider, buleHpText, Convert.ToInt32(curHp),Convert.ToInt32( maxHp), iaAction);
+            }
         }
     }
 
@@ -106,5 +139,18 @@ public class HomeUI : MonoBehaviour
             playerInfoDic[camp][playerInfoData.Index].SetPlayerInfo(playerInfoData);
 
     }
-    
+
+    public void UpdateHpInfo(Slider slider, TextMeshProUGUI textMeshProUGUI, int hp, int maxHp, bool isAction)
+    {
+        if (isAction)
+        {
+            
+        }
+        else
+        {
+            slider.value = hp / maxHp;
+            textMeshProUGUI.text = $"{hp} / {maxHp}";
+        }
+    }
+
 }

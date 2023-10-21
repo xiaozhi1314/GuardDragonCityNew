@@ -29,7 +29,12 @@ public class RVOAgent : MonoBehaviour
     /// 当前查找间隔
     /// </summary>
     public float curFindTime = 0;
+    
+    // 击杀数量
     public int killCount = 0;
+
+
+    public bool m_IsInit = false;
 
 
     public virtual void Proc() { }
@@ -38,6 +43,11 @@ public class RVOAgent : MonoBehaviour
     public void initData(GameData gameData)
     {
         m_GameData = gameData;
+        m_IsInit = true;
+        m_IsDie = false;
+        curAttackTime = 0;
+        curFindTime = 0;
+        killCount = 0;
     }
 
     /// <summary>
@@ -56,6 +66,7 @@ public class RVOAgent : MonoBehaviour
         {
             m_IsDie = true;
             SetDie();
+            m_IsInit = false;
         }
     }
 
@@ -63,14 +74,14 @@ public class RVOAgent : MonoBehaviour
     void LateUpdate()
     {
         if (GameManager.Instance.GameState != Common.GameState.Playing) return;
-        if (m_IsDie) return;
+        if (m_IsDie || m_IsInit == false) return;
         Proc();
         
     }
 
 
     // 减少血量
-    public void SubHp(RVOAgent rVOAgent, float attack)
+    public virtual void SubHp(RVOAgent rVOAgent, float attack)
     {
         if (rVOAgent != null && rVOAgent.CheckIsDie() == false && CheckIsDie() == false) 
         {
@@ -102,6 +113,11 @@ public class RVOAgent : MonoBehaviour
         {
             RVO.Vector2 pos = Simulator.Instance.getAgentPosition(m_GameData.Sid);  
             RVO.Vector2 vel = Simulator.Instance.getAgentVelocity(m_GameData.Sid);
+            if (pos.x() == null || pos.y() == null || vel.x() == null || vel.y() == null)
+            {
+                int i = 1;
+            }
+
             transform.position = new Vector3(pos.x(), transform.position.y, pos.y());
             if(Mathf.Abs(vel.x()) > 0.01f && Mathf.Abs(vel.y()) > 0.01f)
             {

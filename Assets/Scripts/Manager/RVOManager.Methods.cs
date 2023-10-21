@@ -16,6 +16,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
             {
                 leftSoliderAgent.Remove(sid);
                 Simulator.Instance.delAgent(sid);
+                Debug.Log($"remove Sid {sid}" );
             }
             
         }
@@ -25,8 +26,10 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
             {
                 rightSoliderAgent.Remove(sid);
                 Simulator.Instance.delAgent(sid);
+                Debug.Log($"remove Sid {sid}" );
             }
         }
+        
     }
 
     // 根据sid和阵营获取某个小兵
@@ -91,6 +94,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
         return null;
     }
     
+    
      // 创建小兵
         public void CreateSolider(int ID, int count, Common.CampType campType)
         {
@@ -114,6 +118,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
                     int sid = Simulator.Instance.addAgent(new RVO.Vector2(x, z));
                     if(sid >= 0)
                     {
+                        Debug.Log($"Create Sid {sid}");
                         var tableMasterData  = TableManager.Instance.GetArrayData<TableMasterData>(ID);
                         var prefab = Resources.Load<GameObject>(tableMasterData.PrefabPath);
                         var gameData = GetGameData(ID , Common.TargetType.BigSolider, sid, campType, emptyCampType, BlueBuildAgent);
@@ -121,6 +126,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
                         tmp.name = "solider" + sid;
                         var rVOAgent = tmp.GetComponent<RVOAgent>();
                         rVOAgent.initData(gameData);
+                        Simulator.Instance.setAgentPrefVelocity(sid,  (new RVO.Vector2(x,z)));
                         if (campType == Common.CampType.Red)
                         {
                             leftSoliderAgent.Add(sid, rVOAgent);
