@@ -1446,6 +1446,7 @@ MonoBehaviour:
   curAttackTime: 0
   curFindTime: 0
   killCount: 0
+  m_IsInit: 0
 --- !u!114 &3900852438044930752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1476,6 +1477,7 @@ MonoBehaviour:
   curAttackTime: 0
   curFindTime: 0
   killCount: 0
+  m_IsInit: 0
 --- !u!95 &3900852438044930753
 Animator:
   serializedVersion: 5

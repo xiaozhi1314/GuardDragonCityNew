@@ -90,5 +90,16 @@ public class RVOAgentBuild : RVOAgent
             }
         }
     }
-    
+
+    public override void SubHp(RVOAgent rVOAgent, float attack)
+    {
+        base.SubHp(rVOAgent, attack);
+        EventManager.Instance.Fire(Common.EventCmd.SubBuildHp, new EventParams(Common.EventCmd.SubBuildHp, new Dictionary<string, object>()
+        {
+            {"CampType", m_GameData.CampType},
+            {"Hp", m_GameData.HP},
+            {"MaxHp", m_GameData.MaxHp},
+            {"isAction", true},
+        }));
+    }
 }
