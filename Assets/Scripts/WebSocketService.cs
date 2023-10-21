@@ -37,7 +37,7 @@ public class WebSocketService : MonoSingleton<WebSocketService>
             var masterData = new Common.MasterData();
             masterData.ID = gameMsg.subtype;
             masterData.CampType = (gameMsg.type == 1 ? Common.CampType.Red : Common.CampType.Bule);
-            masterData.Count = 2;
+            masterData.Count = 1;
             var objs = new Dictionary<string, object>() { { "Data", JsonConvert.SerializeObject(masterData) } };
             EventManager.Instance.Fire(Common.EventCmd.AddSolider, new EventParams(Common.EventCmd.AddSolider, objs));
             // switch(gameMsg.data[0].type){

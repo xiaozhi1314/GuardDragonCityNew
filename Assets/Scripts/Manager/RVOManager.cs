@@ -73,7 +73,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
         DOTween.Sequence().AppendInterval(5.0f).AppendCallback(() =>
         {
             Common.CampType camp = (Random.Range(1,3) == 1) ? Common.CampType.Red : Common.CampType.Bule;
-            int bing = Random.Range(5,16);
+            int bing = (camp == Common.CampType.Red) ? Random.Range(5,10) : Random.Range(11,16);
             CreateSolider( bing, 1, camp);
 
         }).SetLoops(2);

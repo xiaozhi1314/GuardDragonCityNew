@@ -117,7 +117,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
                         var tableMasterData  = TableManager.Instance.GetArrayData<TableMasterData>(ID);
                         var prefab = Resources.Load<GameObject>(tableMasterData.PrefabPath);
                         var gameData = GetGameData(ID , Common.TargetType.BigSolider, sid, campType, emptyCampType, BlueBuildAgent);
-                        GameObject tmp = GameObject.Instantiate(prefab, new Vector3(x, 1f, z), Quaternion.identity);
+                        GameObject tmp = GameObject.Instantiate(prefab, new Vector3(x, prefab.transform.position.y, z), Quaternion.identity);
                         tmp.name = "solider" + sid;
                         var rVOAgent = tmp.GetComponent<RVOAgent>();
                         rVOAgent.initData(gameData);
