@@ -54,6 +54,12 @@ public class Common
         RankUpdate,             // 排行更新
     }
 
+    public enum Constance
+    {
+        AttackDis = 0,          // 出兵间隔
+        DefaultCreateCount,     // 默认创建数量
+    }
+
     /// <summary>
     /// 初始化怪物数据
     /// </summary>

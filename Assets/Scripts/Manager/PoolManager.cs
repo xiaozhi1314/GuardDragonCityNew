@@ -44,8 +44,9 @@ namespace BigDream
         /// <param name="prefab"></param>
         public void SetPoolGameObject(string objName, GameObject prefab)
         {
-            if (m_CloneObject.ContainsKey(objName) == false)
+            if (m_CloneObject.ContainsKey(objName) == false && prefab != null)
             {
+                prefab.SetActive(false);
                 m_CloneObject.Add(objName, prefab);
             }
         }

@@ -25,7 +25,8 @@ public class TableManager : MonoSingleton<TableManager>
         
         _arrTableNames = new List <string>
         {
-            "TableMaster"
+            "TableMaster",
+            "TableConstance"
         };
         _mapTableNames = new List<string>
         {

@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 using RVO;
 using DG.Tweening;
 using BigDream;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using Random = UnityEngine.Random;
 
 public sealed partial class RVOManager : MonoSingleton<RVOManager>
 {
@@ -51,17 +52,19 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
     public void AutoCreateSolider()
     {
         var index = 0;
-        DOTween.Sequence().AppendInterval(2.0f).AppendCallback(() =>{
+        var atttackDis = TableManager.Instance.GetArrayData<TableConstanceData>((int)Common.Constance.AttackDis).Value;
+        var DefaultCreateCount = Convert.ToInt32(TableManager.Instance.GetArrayData<TableConstanceData>((int)Common.Constance.DefaultCreateCount).Value);
+        DOTween.Sequence().AppendInterval(atttackDis).AppendCallback(() =>{
             SetAgentDefaults(Common.TargetType.Solider);
             if (index % 2 == 0)
             {
-                CreateSolider( 4, 10, Common.CampType.Bule);
-                CreateSolider( 3, 10, Common.CampType.Red);
+                CreateSolider( 4, DefaultCreateCount, Common.CampType.Bule);
+                CreateSolider( 3, DefaultCreateCount, Common.CampType.Red);
             }
             else
             {
-                CreateSolider( 3, 10, Common.CampType.Red);
-                CreateSolider( 4, 10, Common.CampType.Bule);
+                CreateSolider( 3, DefaultCreateCount, Common.CampType.Red);
+                CreateSolider( 4, DefaultCreateCount, Common.CampType.Bule);
             }
 
       
