@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using RVO;
@@ -96,9 +97,10 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
     
     
      // 创建小兵
-        public void CreateSolider(int ID, int count, Common.CampType campType)
+        public void CreateSolider(int ID, int count, Common.CampType campType, string tikTokId = "")
         {
-            
+            var tableGameData = TableManager.Instance.GetArrayData<TableMasterData>(ID);
+            SetAgentDefaults(tableGameData.AgentDefaults);
             Common.CampType emptyCampType = (campType == Common.CampType.Red) ? Common.CampType.Bule : Common.CampType.Red;
             for(int i = 0; i < 1; i++)
             {
@@ -120,7 +122,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
                     {
                         Debug.Log($"Create Sid {sid}");
                         
-                        var gameData = GetGameData(ID , Common.TargetType.BigSolider, sid, campType, emptyCampType, BlueBuildAgent);
+                        var gameData = GetGameData(ID , Common.TargetType.BigSolider, sid, campType, emptyCampType, BlueBuildAgent,tikTokId);
                         GameObject tmp = PoolManager.Instance.GetObj(gameData.PoolName, transform, new Vector3(x, 1f, z));
 
                         tmp.name = "solider" + sid;

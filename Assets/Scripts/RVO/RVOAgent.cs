@@ -174,6 +174,9 @@ public class RVOAgent : MonoBehaviour
             {
                 killCount++;
                 m_GameData.TargetAgent.m_GameData.ActionType = Common.ActionType.Die;
+                
+                // 我击杀对方获得分数  
+                GameManager.Instance.AddScore(m_GameData.TargetAgent.m_GameData.TikTokId, m_GameData.TargetAgent.m_GameData.Score);
             }
         }
         else

@@ -48,9 +48,9 @@ public class GameMsg
         public string openId;
         public string avatarUrl;
         public string nickName;
-        public string camp;
-        public string soliderId;
-        public string soliderCount;
+        public int camp;
+        public int soliderId;
+        public int soliderCount;
     }
 
     /// <summary>
@@ -88,6 +88,11 @@ public class GameMsg
     public class StartGameReq
     {
         public string sessionId;
+    }
+
+    public class StartGameResp
+    {
+        public string gameId;
     }
 
 }

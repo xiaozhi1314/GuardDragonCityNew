@@ -77,16 +77,18 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
     }
     */
 
-    public GameData GetGameData(int index, Common.TargetType targetType, int sid, Common.CampType campType, Common.CampType emptyCampType, RVOAgent argetAgent = null)
+    public GameData GetGameData(int index, Common.TargetType targetType, int sid, Common.CampType campType, Common.CampType emptyCampType, RVOAgent argetAgent = null, string tikTokId = "")
     {
         var gameData = new GameData();
-        gameData.TargetType = Common.TargetType.Solider;
+      
         gameData.CampType = campType;
         gameData.EmtpyCampType = emptyCampType;
         gameData.Sid = sid;
         gameData.TargetAgent = argetAgent;
-
+        gameData.TikTokId = tikTokId;
+        
         var tableMasterData  = TableManager.Instance.GetArrayData<TableMasterData>(index);
+        gameData.TargetType = tableMasterData.AgentDefaults;
         gameData.HP = tableMasterData.HP;
         gameData.MaxHp = tableMasterData.MaxHP;
         gameData.Atk = tableMasterData.Atk;
@@ -95,6 +97,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
         gameData.FindDis = tableMasterData.FindDis;
         gameData.FindCD = tableMasterData.FindCD;
         gameData.PoolName = tableMasterData.PoolName;
+        gameData.Score = tableMasterData.Score;
         return gameData;
     }
 

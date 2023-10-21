@@ -18,7 +18,6 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
         SetAgentDefaults(Common.TargetType.Build);
         InitBuild(1, RedBuildAgent, Common.CampType.Red, Common.CampType.Bule);
         InitBuild(2, BlueBuildAgent, Common.CampType.Bule, Common.CampType.Red);
-        EventManager.Instance.Subscribe(Common.EventCmd.AddSolider, this, EventAddSolider);
     }
 
     // Update is called once per frame
@@ -38,14 +37,6 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
     }
 
 
-    private void EventAddSolider(object sender = null, object userData = null, EventParams e = null){
-        if(e.Objects.Count > 0){
-            var masterData = JsonConvert.DeserializeObject<Common.MasterData>((string)e.Objects["Data"]);
-            CreateSolider( masterData.ID, masterData.Count, masterData.CampType);
-        }
-    }
-
-    
     /// <summary>
     /// 自动创建小兵
     /// </summary>
@@ -55,7 +46,6 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
         var atttackDis = TableManager.Instance.GetArrayData<TableConstanceData>((int)Common.Constance.AttackDis).Value;
         var DefaultCreateCount = Convert.ToInt32(TableManager.Instance.GetArrayData<TableConstanceData>((int)Common.Constance.DefaultCreateCount).Value);
         DOTween.Sequence().AppendInterval(atttackDis).AppendCallback(() =>{
-            SetAgentDefaults(Common.TargetType.Solider);
             if (index % 2 == 0)
             {
                 CreateSolider( 4, DefaultCreateCount, Common.CampType.Bule);

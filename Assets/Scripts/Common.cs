@@ -46,22 +46,20 @@ public class Common
     public enum EventCmd
     {
         None,
-        AddMaster,
-        AddSolider,
-        AddBigSolider,
-        ResetGame,              // ?????? 
-        SubBuildHp,             // ???????
-        RankUpdate,             // ???и???
+        NoticeMsg,              // 服务器出兵通知
+        ResetGame,             // 重启游戏
+        SubBuildHp,             // 建筑减血
+        RankUpdate,            // 排名更新
     }
 
     public enum Constance
     {
-        AttackDis = 0,          // ???????
-        DefaultCreateCount,     // ??????????
+        AttackDis = 0,          // 攻击间隔
+        DefaultCreateCount,     // 默认创建数量
     }
 
     /// <summary>
-    /// ?????????????
+    /// 怪物数据
     /// </summary>
     public class MasterData
     {

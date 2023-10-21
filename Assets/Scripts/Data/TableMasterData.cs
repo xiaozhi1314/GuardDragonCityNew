@@ -24,4 +24,8 @@ public class TableMasterData : CTableData
     public string PrefabPath;
     // 对象池中的名字
     public string PoolName;
+    // 击杀积分
+    public int Score;
+    // rvo模型
+    public Common.TargetType AgentDefaults;
 }

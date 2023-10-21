@@ -87,6 +87,8 @@ public class RVOAgentBigSolider : RVOAgent
                         {
                             killCount++;
                             findAgent.m_GameData.ActionType = Common.ActionType.Die;
+                            // 我击杀对方获得分数  
+                            GameManager.Instance.AddScore(findAgent.m_GameData.TikTokId, findAgent.m_GameData.Score);
                         }
                     }
                 

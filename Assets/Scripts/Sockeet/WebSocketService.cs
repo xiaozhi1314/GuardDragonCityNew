@@ -57,7 +57,7 @@ public class WebSocketService : MonoSingleton<WebSocketService>
             {
                 if ((int)msgObject["code"] == 100)
                 {
-                    SocketMessageCallBack((GameMsg.cmdType)(int)msgObject["code"], msgObject["data"]);
+                    SocketMessageCallBack((GameMsg.cmdType)(int)msgObject["cmdType"], msgObject["data"]);
                 }
                 else
                 {
@@ -111,6 +111,7 @@ public class WebSocketService : MonoSingleton<WebSocketService>
             case GameMsg.cmdType.login:
             {
                 var loginRespData = jToken.ToObject<GameMsg.LoginRespData>();
+                GameManager.Instance.m_SessionId = loginRespData.sessionId;
                 break;
             } 
             case GameMsg.cmdType.StartGame:
@@ -120,7 +121,11 @@ public class WebSocketService : MonoSingleton<WebSocketService>
             } 
             case GameMsg.cmdType.NoticeMsg:
             {
-                var moticeMsgRespData = jToken.ToObject<GameMsg.NoticeMsgRespData>();
+                var moticeMsgRespDataList = jToken.ToObject<List<GameMsg.NoticeMsgRespData>>();
+                EventManager.Instance.Fire(Common.EventCmd.NoticeMsg, new EventParams(Common.EventCmd.NoticeMsg,new Dictionary<string, object>()
+                {
+                    {"Data" , moticeMsgRespDataList},
+                }));
                 break;
             } 
             case GameMsg.cmdType.Result:
