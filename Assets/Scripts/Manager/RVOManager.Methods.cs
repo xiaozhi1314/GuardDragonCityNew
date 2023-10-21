@@ -122,6 +122,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
                         
                         var gameData = GetGameData(ID , Common.TargetType.BigSolider, sid, campType, emptyCampType, BlueBuildAgent);
                         GameObject tmp = PoolManager.Instance.GetObj(gameData.PoolName, transform, new Vector3(x, 1f, z));
+
                         tmp.name = "solider" + sid;
                         var rVOAgent = tmp.GetComponent<RVOAgent>();
                         rVOAgent.initData(gameData);
