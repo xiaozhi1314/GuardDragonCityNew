@@ -12,7 +12,7 @@ namespace BigDream
         {
             // 服务器消息通知
             EventManager.Instance.Subscribe(Common.EventCmd.NoticeMsg, this, AddMasterCallBack);
-        
+
         }
 
 
@@ -34,6 +34,8 @@ namespace BigDream
 
             }
         }
+        
+     
         
 
     }

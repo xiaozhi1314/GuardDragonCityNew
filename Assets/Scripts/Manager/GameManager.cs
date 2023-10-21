@@ -11,13 +11,13 @@ namespace BigDream
     {
         public Common.GameState GameState = Common.GameState.Start;
         public string m_SessionId = string.Empty;
-        public Dictionary<string, int> m_ScoreDic;
+        public Dictionary<Common.CampType,Dictionary<string, GameMsg.ResultSourceData> > m_ScoreDic;
         public Dictionary<string, GameMsg.NoticeMsgRespData> m_NoticeMsgDic;
 
 
         public override void Init()
         {
-            m_ScoreDic = new Dictionary<string, int>();
+            m_ScoreDic = new Dictionary<Common.CampType, Dictionary<string, GameMsg.ResultSourceData>>();
             m_NoticeMsgDic = new Dictionary<string, GameMsg.NoticeMsgRespData>();
             // 初始化对象池  
             TableManager.Instance.GetArrayDatasGroup<TableMasterData>().Values.ToList().ForEach(masterDataObject =>
@@ -36,6 +36,8 @@ namespace BigDream
         public void GameReset()
         {
             m_ScoreDic.Clear();
+            m_ScoreDic.Add(Common.CampType.Bule, new Dictionary<string, GameMsg.ResultSourceData>());
+            m_ScoreDic.Add(Common.CampType.Red, new Dictionary<string, GameMsg.ResultSourceData>());
             m_NoticeMsgDic.Clear();
             m_SessionId = string.Empty;
         }
@@ -72,12 +74,24 @@ namespace BigDream
         public void AddScore(string openId, int source)
         {
             if (openId == string.Empty) return;
-            if (m_ScoreDic.ContainsKey(openId) == false)
+            
+            if (m_NoticeMsgDic.ContainsKey(openId) == false)
             {
-                m_ScoreDic.Add(openId, 0);
-            }
+                var camp = (Common.CampType)m_NoticeMsgDic[openId].camp;
+                if (m_ScoreDic[camp].ContainsKey(openId) == false)
+                {
+                    m_ScoreDic[camp].Add(openId, new GameMsg.ResultSourceData(){openId = openId,score = 0});
+                }
 
-            m_ScoreDic[openId] += source;
+                m_ScoreDic[camp][openId].score += source;
+                
+                EventManager.Instance.Fire(Common.EventCmd.RankUpdate, new EventParams(Common.EventCmd.NoticeMsg, new Dictionary<string, object>()
+                {
+                    {"camp", m_NoticeMsgDic[openId].camp},
+                    {"tikTokId", openId},
+                    {"source", m_ScoreDic[camp][openId].score}
+                }));
+            }
         }
 
         /// <summary>
@@ -106,6 +120,16 @@ namespace BigDream
             }
 
             return PlayerPrefs.GetString("DevicesId");
+        }
+
+        /// <summary>
+        /// 根据阵营去出前三名
+        /// </summary>
+        /// <param name="campType"></param>
+        /// <returns></returns>
+        public List<GameMsg.ResultSourceData> GetRankList(Common.CampType campType)
+        {
+            return m_ScoreDic[campType].Values.ToList().OrderByDescending(data => data.score).Take(3).ToList();
         }
 
     }

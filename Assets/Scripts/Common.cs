@@ -103,32 +103,27 @@ public class Common
 public class PlayerInfoData
 {
     /// <summary>
-    /// ??
+    /// 当前所在下表
     /// </summary>
     public int Index ;
+    
 
     /// <summary>
-    /// ??
-    /// </summary>
-    public string Name;
-
-    /// <summary>
-    /// ??
+    /// 
     /// </summary>
     public int Score;
 
     /// <summary>
-    /// ??
+    /// tiktokID
     /// </summary>
-    public string HeadIcon;
+    public string TikTokId;
 
     
-    public PlayerInfoData(int index,string name,int score,string headIcon)
+    public PlayerInfoData(int index,string tikTokId,int score)
     {
         Index = index;
-        Name = name;
-        Score = score;  
-        HeadIcon = headIcon;    
+        TikTokId = tikTokId;
+        Score = score;     
     }
 
   
