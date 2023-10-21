@@ -90,6 +90,48 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
          }
         return null;
     }
-
-
+    
+     // 创建小兵
+        public void CreateSolider(int ID, int count, Common.CampType campType)
+        {
+            
+            Common.CampType emptyCampType = (campType == Common.CampType.Red) ? Common.CampType.Bule : Common.CampType.Red;
+            for(int i = 0; i < 1; i++)
+            {
+                for(int j = 0; j < count; j++)
+                {
+                    float x = 0;
+                    if (campType == Common.CampType.Red)
+                    {
+                        x  =  -90 + i * 3;
+                    }
+                    else
+                    {
+                        x=  90 - i * 3;
+                    }
+    
+                    float z = 15 - j * 3;
+                    int sid = Simulator.Instance.addAgent(new RVO.Vector2(x, z));
+                    if(sid >= 0)
+                    {
+                        var tableMasterData  = TableManager.Instance.GetArrayData<TableMasterData>(ID);
+                        var prefab = Resources.Load<GameObject>(tableMasterData.PrefabPath);
+                        var gameData = GetGameData(ID , Common.TargetType.BigSolider, sid, campType, emptyCampType, BlueBuildAgent);
+                        GameObject tmp = GameObject.Instantiate(prefab, new Vector3(x, 1f, z), Quaternion.identity);
+                        tmp.name = "solider" + sid;
+                        var rVOAgent = tmp.GetComponent<RVOAgent>();
+                        rVOAgent.initData(gameData);
+                        if (campType == Common.CampType.Red)
+                        {
+                            leftSoliderAgent.Add(sid, rVOAgent);
+                        }
+                        else
+                        {
+                            rightSoliderAgent.Add(sid, rVOAgent);
+                        }
+                    }
+                }
+            }
+        }
+    
 }

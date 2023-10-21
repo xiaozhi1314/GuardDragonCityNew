@@ -31,6 +31,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
         }
     }
 
+    /*
     public GameData GetGameData(Common.TargetType targetType, int sid, Common.CampType campType, Common.CampType emptyCampType, RVOAgent argetAgent = null)
     {
         var gameData = new GameData();
@@ -74,7 +75,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
         }
         return gameData;
     }
-
+    */
 
     public GameData GetGameData(int index, Common.TargetType targetType, int sid, Common.CampType campType, Common.CampType emptyCampType, RVOAgent argetAgent = null)
     {

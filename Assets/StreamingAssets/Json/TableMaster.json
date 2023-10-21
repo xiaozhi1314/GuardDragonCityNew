@@ -2,7 +2,7 @@
   {"ID":1,"Desc":"红方主基地","HP":10000,"MaxHP":10000,"Atk":160,"AtkCD":1.5,"AtkDis":35,"FindDis":10,"FindCD":1.5,"Speed":0,"PrefabPath":"Prefabs/LeftCastle"},
   {"ID":2,"Desc":"蓝方主基地","HP":10000,"MaxHP":10000,"Atk":160,"AtkCD":1.5,"AtkDis":35,"FindDis":10,"FindCD":1.5,"Speed":0,"PrefabPath":"Prefabs/RightCastle"},
   {"ID":3,"Desc":"红方普通小兵","HP":2,"MaxHP":2,"Atk":2,"AtkCD":0.5,"AtkDis":4,"FindDis":15,"FindCD":0.1,"Speed":1.0,"PrefabPath":"Prefabs/Gift/Left/LeftSolider"},
-  {"ID":4,"Desc":"蓝方普通小兵","HP":2,"MaxHP":2,"Atk":2,"AtkCD":0.5,"AtkDis":4,"FindDis":15,"FindCD":0.1,"Speed":1.0,"PrefabPath":"Prefabs/Gift/Right/LeftSolider"},
+  {"ID":4,"Desc":"蓝方普通小兵","HP":2,"MaxHP":2,"Atk":2,"AtkCD":0.5,"AtkDis":4,"FindDis":15,"FindCD":0.1,"Speed":1.0,"PrefabPath":"Prefabs/Gift/Right/RightSolider"},
   {"ID":5,"Desc":"红方仙女棒","HP":30,"MaxHP":30,"Atk":5,"AtkCD":0.5,"AtkDis":4,"FindDis":15,"FindCD":0.1,"Speed":1,"PrefabPath":"Prefabs/Gift/Left/1"},
   {"ID":6,"Desc":"红方魔法镜","HP":150,"MaxHP":150,"Atk":13,"AtkCD":0.5,"AtkDis":4,"FindDis":15,"FindCD":0.1,"Speed":1,"PrefabPath":"Prefabs/Gift/Left/2"},
   {"ID":7,"Desc":"红方能量电池","HP":200,"MaxHP":200,"Atk":30,"AtkCD":0.5,"AtkDis":4,"FindDis":15,"FindCD":0.1,"Speed":1,"PrefabPath":"Prefabs/Gift/Left/3"},

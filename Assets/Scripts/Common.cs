@@ -49,6 +49,9 @@ public class Common
         AddMaster,
         AddSolider,
         AddBigSolider,
+        ResetGame,              // 重开游戏 
+        SubBuildHp,             // 减少血量
+        RankUpdate,             // 排行更新
     }
 
     /// <summary>

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public sealed partial class RVOManager 
 {
-    public GameObject redPrefab, bluePrefab;
     public RVOAgentBuild RedBuildAgent, BlueBuildAgent;
     public Dictionary<int, RVOAgent> leftSoliderAgent = new Dictionary<int, RVOAgent>();
     public Dictionary<int, RVOAgent> rightSoliderAgent = new Dictionary<int, RVOAgent>();

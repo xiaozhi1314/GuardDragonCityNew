@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -32,7 +33,7 @@ public class HomeUI : MonoBehaviour
     private Dictionary<Common.CampType, List<PlayerInfo>> playerInfoDic;
 
 
-    public void Awake()
+    public void Start()
     {
         /*
         playerInfoDic = new Dictionary<Common.CampeType, List<PlayerInfo>>();
@@ -46,6 +47,34 @@ public class HomeUI : MonoBehaviour
         SetPlayerInfo(playerInfoData1, Common.CampeType.Enemy);
         SetPlayerInfo(playerInfoData2, Common.CampeType.Enemy);
         SetPlayerInfo(playerInfoData3, Common.CampeType.Enemy);*/
+
+        EventManager.Instance.Subscribe(Common.EventCmd.SubBuildHp, this, SubBuildHpCallBack);
+
+        EventManager.Instance.Subscribe(Common.EventCmd.RankUpdate, this, RankUpdateCallBack);
+    }
+
+    /// <summary>
+    /// 血量减少
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="userData"></param>
+    /// <param name="e"></param>
+    private void SubBuildHpCallBack(object sender = null, object userData = null, EventParams e = null)
+    {
+        if (e != null && e.Objects.ContainsKey("Data"))
+        {
+            var masterData = JsonConvert.DeserializeObject<Common.MasterData>((string)e.Objects["Data"]);
+
+        }
+    }
+
+    private void RankUpdateCallBack(object sender = null, object userData = null, EventParams e = null)
+    {
+        if (e != null && e.Objects.ContainsKey("Data"))
+        {
+            var masterData = JsonConvert.DeserializeObject<Common.MasterData>((string)e.Objects["Data"]);
+
+        }
     }
 
 
