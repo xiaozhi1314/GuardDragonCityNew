@@ -80,7 +80,7 @@ namespace BigDream
             {
                 go.transform.SetParent(parent);
                 go.transform.position = pos;
-                go.transform.localScale = Vector3.one * scale;
+               // go.transform.localScale = Vector3.one * scale;
             }
             return go;
         }

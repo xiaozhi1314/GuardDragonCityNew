@@ -8,7 +8,7 @@ public class Root : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+        PoolManager.Instance.Init();
         EventManager.Instance.Init();
         TableManager.Instance.Init();
         MessageManager.Instance.Init();

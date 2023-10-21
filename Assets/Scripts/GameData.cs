@@ -57,6 +57,11 @@ public class GameData
      /// 警戒cd
      /// </summary>
      public float FindCD = 0.5f;
+     
+     /// <summary>
+     /// 对象吃名字
+     /// </summary>
+     public  string PoolName = String.Empty;
 
     
      /// <summary>

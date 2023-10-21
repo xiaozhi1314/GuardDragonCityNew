@@ -113,12 +113,17 @@ public class RVOAgent : MonoBehaviour
         {
             RVO.Vector2 pos = Simulator.Instance.getAgentPosition(m_GameData.Sid);  
             RVO.Vector2 vel = Simulator.Instance.getAgentVelocity(m_GameData.Sid);
-            if (pos.x() == null || pos.y() == null || vel.x() == null || vel.y() == null)
+            try
             {
-                int i = 1;
+                transform.position = new Vector3(pos.x(), transform.position.y, pos.y());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
 
-            transform.position = new Vector3(pos.x(), transform.position.y, pos.y());
+            
             if(Mathf.Abs(vel.x()) > 0.01f && Mathf.Abs(vel.y()) > 0.01f)
             {
                 transform.forward = new Vector3(vel.x(), 0, vel.y()).normalized;

@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Unity.VisualScripting;
+using UnityEngine;
 
 namespace BigDream
 {
@@ -21,8 +23,18 @@ namespace BigDream
             
             RVOManager.Instance.AutoCreateSolider();
             RVOManager.Instance.AutoCreateBigSolider();
+            TableManager.Instance.GetArrayDatasGroup<TableMasterData>().Values.ToList().ForEach(masterDataObject =>
+            {
+                var masterData = (TableMasterData)masterDataObject;
+                if (masterData.ID > 3)
+                {
+                    PoolManager.Instance.SetPoolGameObject(masterData.PoolName, Resources.Load<GameObject>(masterData.PrefabPath));
+                }
+            });
         }
         
+    
+
 
     }
 }

@@ -144,11 +144,12 @@ public class HomeUI : MonoBehaviour
     {
         if (isAction)
         {
-            
+            slider.value = hp * 1.0f / maxHp;
+            textMeshProUGUI.text = $"{hp} / {maxHp}";
         }
         else
         {
-            slider.value = hp / maxHp;
+            slider.value = hp * 1.0f / maxHp;
             textMeshProUGUI.text = $"{hp} / {maxHp}";
         }
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using BigDream;
 using DG.Tweening.Plugins.Options;
 using RVO;
 using Unity.VisualScripting;
@@ -13,9 +14,8 @@ public class RVOAgentBigSolider : RVOAgent
     public override void SetDie()
     {
         Debug.Log("播放死亡动画，击杀数：" + killCount + "SID：" + m_GameData.Sid);
-        m_IsDie = true;
         RVOManager.Instance.RemoveSolider(m_GameData.Sid, m_GameData.CampType);
-        gameObject.SetActive(false);
+        PoolManager.Instance.FreeObj(m_GameData.PoolName, gameObject);
         WebSocketService.Instance.OnSendMessage("DIE");
     }
 
