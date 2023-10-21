@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace BigDream
@@ -33,8 +30,20 @@ namespace BigDream
             });
         }
         
-    
+        /// <summary>
+        /// 获取用户的devicesID
+        /// </summary>
+        /// <returns></returns>
+        public string GetDevicesId()
+        {
+            if (PlayerPrefs.HasKey("DevicesId") == false)
+            {
+                PlayerPrefs.SetString("DevicesId", SystemInfo.deviceUniqueIdentifier + UnityEngine.Random.Range(0, 1000000) );
+                PlayerPrefs.Save();
+            }
 
+            return PlayerPrefs.GetString("DevicesId");
+        }
 
     }
 }

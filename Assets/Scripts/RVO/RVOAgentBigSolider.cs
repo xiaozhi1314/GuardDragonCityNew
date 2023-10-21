@@ -16,7 +16,6 @@ public class RVOAgentBigSolider : RVOAgent
         Debug.Log("播放死亡动画，击杀数：" + killCount + "SID：" + m_GameData.Sid);
         RVOManager.Instance.RemoveSolider(m_GameData.Sid, m_GameData.CampType);
         PoolManager.Instance.FreeObj(m_GameData.PoolName, gameObject);
-        WebSocketService.Instance.OnSendMessage("DIE");
     }
 
 

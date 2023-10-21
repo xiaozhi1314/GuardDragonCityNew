@@ -14,9 +14,9 @@ public class Common
     public enum TargetType
     {
         None,               // none
-        Solider,            // 小兵
-        BigSolider,         // 大兵
-        Build,              // 建筑
+        Solider,            // С??
+        BigSolider,         // ???
+        Build,              // ????
     }
 
 
@@ -41,7 +41,7 @@ public class Common
 
 
     /// <summary>
-    /// 消息通知类型
+    /// ?????????
     /// </summary>
     public enum EventCmd
     {
@@ -49,45 +49,55 @@ public class Common
         AddMaster,
         AddSolider,
         AddBigSolider,
-        ResetGame,              // 重开游戏 
-        SubBuildHp,             // 减少血量
-        RankUpdate,             // 排行更新
+        ResetGame,              // ?????? 
+        SubBuildHp,             // ???????
+        RankUpdate,             // ???и???
     }
 
     public enum Constance
     {
-        AttackDis = 0,          // 出兵间隔
-        DefaultCreateCount,     // 默认创建数量
+        AttackDis = 0,          // ???????
+        DefaultCreateCount,     // ??????????
     }
 
     /// <summary>
-    /// 初始化怪物数据
+    /// ?????????????
     /// </summary>
     public class MasterData
     {
 
         /// <summary>
-        /// 怪物ID
+        /// ????ID
         /// </summary>
         public int ID;
 
         /// <summary>
-        /// 阵营
+        /// ???
         /// </summary>
         public CampType CampType;
 
         /// <summary>
-        /// 怪物类型
+        /// ????????
         /// </summary>
         public TargetType TargetType;
 
         /// <summary>
-        /// 数量
+        /// ????
         /// </summary>
         /// <returns></returns>
         public int Count;
 
 
+    }
+    
+    public static void Slog(string mes)
+    {
+        Debug.Log(mes);
+    }
+
+    public static void SError(string msg)
+    {
+        Debug.LogError(msg);
     }
 }
 
@@ -122,4 +132,6 @@ public class PlayerInfoData
         Score = score;  
         HeadIcon = headIcon;    
     }
+
+  
 }
