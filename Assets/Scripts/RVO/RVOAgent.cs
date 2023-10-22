@@ -113,16 +113,12 @@ public class RVOAgent : MonoBehaviour
         {
             RVO.Vector2 pos = Simulator.Instance.getAgentPosition(m_GameData.Sid);  
             RVO.Vector2 vel = Simulator.Instance.getAgentVelocity(m_GameData.Sid);
-            try
+            if (float.IsNaN(pos.x()) || float.IsNaN(pos.y()))
             {
-                transform.position = new Vector3(pos.x(), transform.position.y, pos.y());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
+                return;
             }
 
+            transform.position = new Vector3(pos.x(), transform.position.y, pos.y());
             
             if(Mathf.Abs(vel.x()) > 0.01f && Mathf.Abs(vel.y()) > 0.01f)
             {

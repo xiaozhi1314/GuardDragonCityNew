@@ -17,7 +17,6 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
             {
                 leftSoliderAgent.Remove(sid);
                 Simulator.Instance.delAgent(sid);
-                Debug.Log($"remove Sid {sid}" );
             }
             
         }
@@ -27,7 +26,6 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
             {
                 rightSoliderAgent.Remove(sid);
                 Simulator.Instance.delAgent(sid);
-                Debug.Log($"remove Sid {sid}" );
             }
         }
         
@@ -120,8 +118,6 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
                     int sid = Simulator.Instance.addAgent(new RVO.Vector2(x, z));
                     if(sid >= 0)
                     {
-                        Debug.Log($"Create Sid {sid}");
-                        
                         var gameData = GetGameData(ID , Common.TargetType.BigSolider, sid, campType, emptyCampType, BlueBuildAgent,tikTokId);
                         GameObject tmp = PoolManager.Instance.GetObj(gameData.PoolName, transform, new Vector3(x, 1f, z));
 
