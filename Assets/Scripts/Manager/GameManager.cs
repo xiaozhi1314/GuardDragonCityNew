@@ -28,6 +28,8 @@ namespace BigDream
                 if (masterData.ID >= 3)
                 {
                     PoolManager.Instance.SetPoolGameObject(masterData.PoolName, Resources.Load<GameObject>(masterData.PrefabPath));
+                    PoolManager.Instance.SetPoolGameObject(masterData.PoolName + "Notice", Resources.Load<GameObject>(masterData.NoticePrefabPath));
+
                 }
             });
             

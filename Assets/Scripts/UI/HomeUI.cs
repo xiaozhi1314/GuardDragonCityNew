@@ -2,6 +2,7 @@ using System;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using BigDream;
 using TMPro;
 using Unity.Mathematics;
@@ -49,6 +50,8 @@ public class HomeUI : MonoBehaviour
         EventManager.Instance.Subscribe(Common.EventCmd.SubBuildHp, this, SubBuildHpCallBack);
         EventManager.Instance.Subscribe(Common.EventCmd.RankUpdate, this, RankUpdateCallBack);
         EventManager.Instance.Subscribe(Common.EventCmd.ResetGame, this, ResetGameCallBack);
+        
+        playerInfoDic = new Dictionary<Common.CampType, List<PlayerInfo>>();
         ResetData();
     }
 
@@ -76,8 +79,12 @@ public class HomeUI : MonoBehaviour
         m_MinSource = new Dictionary<Common.CampType, int>();
         m_MinSource.Add(Common.CampType.Bule,99999999);
         m_MinSource.Add(Common.CampType.Red,99999999);
+        
+        playerInfoDic.Values.ToList().ForEach(listItemInfo =>
+        {
+            listItemInfo.ForEach(playInfo=>{ playInfo.gameObject.SetActive(false);});
+        });
 
-        playerInfoDic = new Dictionary<Common.CampType, List<PlayerInfo>>();
     }
 
     /// <summary>

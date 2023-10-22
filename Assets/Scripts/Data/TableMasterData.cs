@@ -28,4 +28,6 @@ public class TableMasterData : CTableData
     public int Score;
     // rvo模型
     public Common.TargetType AgentDefaults;
+    // 展示预制体路径
+    public string NoticePrefabPath;
 }
