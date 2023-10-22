@@ -2,6 +2,7 @@ using System;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using BigDream;
 using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -37,43 +38,44 @@ public class HomeUI : MonoBehaviour
 
     private Dictionary<Common.CampType, List<PlayerInfo>> playerInfoDic;
     
+    /// <summary>
+    /// 当前显示最小分数
+    /// </summary>
+    private Dictionary<Common.CampType, int> m_MinSource;
+
 
     public void Start()
     {
-        /*
-        playerInfoDic = new Dictionary<Common.CampeType, List<PlayerInfo>>();
-
-        PlayerInfoData playerInfoData1 = new PlayerInfoData(0, "111", 100, "nihao");
-        PlayerInfoData playerInfoData2 = new PlayerInfoData(1, "222", 50, "nihao");
-        PlayerInfoData playerInfoData3 = new PlayerInfoData(2, "333", 30, "nihao");
-        SetPlayerInfo(playerInfoData1, Common.CampeType.Own);
-        SetPlayerInfo(playerInfoData2, Common.CampeType.Own);
-        SetPlayerInfo(playerInfoData3, Common.CampeType.Own);
-        SetPlayerInfo(playerInfoData1, Common.CampeType.Enemy);
-        SetPlayerInfo(playerInfoData2, Common.CampeType.Enemy);
-        SetPlayerInfo(playerInfoData3, Common.CampeType.Enemy);*/
-
         EventManager.Instance.Subscribe(Common.EventCmd.SubBuildHp, this, SubBuildHpCallBack);
         EventManager.Instance.Subscribe(Common.EventCmd.RankUpdate, this, RankUpdateCallBack);
-        
-       var redData =  TableManager.Instance.GetArrayData<TableMasterData>(1);
-       var blueData =  TableManager.Instance.GetArrayData<TableMasterData>(1);
-       EventManager.Instance.Fire(Common.EventCmd.SubBuildHp, new EventParams(Common.EventCmd.SubBuildHp, new Dictionary<string, object>()
-       {
-           {"CampType", Common.CampType.Red},
-           {"Hp", redData.HP},
-           {"MaxHp", redData.MaxHP},
-           {"isAction", false},
-       }));
+        EventManager.Instance.Subscribe(Common.EventCmd.ResetGame, this, ResetGameCallBack);
+        ResetData();
+    }
+
+    public void ResetData()
+    {
+        // 当前初始化主建筑的血量
+        var redData =  TableManager.Instance.GetArrayData<TableMasterData>(1);
+        var blueData =  TableManager.Instance.GetArrayData<TableMasterData>(1);
+        EventManager.Instance.Fire(Common.EventCmd.SubBuildHp, new EventParams(Common.EventCmd.SubBuildHp, new Dictionary<string, object>()
+        {
+            {"CampType", Common.CampType.Red},
+            {"Hp", redData.HP},
+            {"MaxHp", redData.MaxHP},
+            {"isAction", false},
+        }));
        
-       EventManager.Instance.Fire(Common.EventCmd.SubBuildHp, new EventParams(Common.EventCmd.SubBuildHp, new Dictionary<string, object>()
-       {
-           {"CampType", Common.CampType.Bule},
-           {"Hp", blueData.HP},
-           {"MaxHp", blueData.MaxHP},
-           {"isAction", false},
-       }));
-       
+        EventManager.Instance.Fire(Common.EventCmd.SubBuildHp, new EventParams(Common.EventCmd.SubBuildHp, new Dictionary<string, object>()
+        {
+            {"CampType", Common.CampType.Bule},
+            {"Hp", blueData.HP},
+            {"MaxHp", blueData.MaxHP},
+            {"isAction", false},
+        }));
+
+        m_MinSource = new Dictionary<Common.CampType, int>();
+        m_MinSource.Add(Common.CampType.Bule,99999999);
+        m_MinSource.Add(Common.CampType.Red,99999999);
     }
 
     /// <summary>
@@ -103,10 +105,20 @@ public class HomeUI : MonoBehaviour
 
     private void RankUpdateCallBack(object sender = null, object userData = null, EventParams e = null)
     {
-        if (e != null && e.Objects.ContainsKey("Data"))
+        if (e != null && e.Objects.ContainsKey("camp"))
         {
-            var masterData = JsonConvert.DeserializeObject<Common.MasterData>((string)e.Objects["Data"]);
-
+            var camp = (Common.CampType)e.Objects["camp"];
+            var tikTokId = (string)e.Objects["tikTokId"];
+            var source = (int)e.Objects["source"];
+            if (source < m_MinSource[camp] && m_MinSource[camp] != 99999999) return; // 去除根本不会上榜的消息
+            var rankList = GameManager.Instance.GetRankList(camp);
+            for (int idx = 0; idx < rankList.Count; idx++)
+            {
+                SetPlayerInfo(new PlayerInfoData(idx, rankList[idx].openId, rankList[idx].score), camp);
+                m_MinSource[camp] = Mathf.Min(m_MinSource[camp], rankList[idx].score);
+            }
+            
+           
         }
     }
 
@@ -152,6 +164,12 @@ public class HomeUI : MonoBehaviour
             slider.value = hp * 1.0f / maxHp;
             textMeshProUGUI.text = $"{hp} / {maxHp}";
         }
+    }
+
+
+    public void ResetGameCallBack(object sender = null, object userData = null, EventParams e = null)
+    {
+        ResetData();
     }
 
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using BigDream;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,7 +30,7 @@ public class PlayerInfo : MonoBehaviour
     {
         gameObject.SetActive(true);
         randText.text = playerInfoData.Index.ToString();
-        nameText.text = playerInfoData.Name;
+        nameText.text = GameManager.Instance.m_NoticeMsgDic?[playerInfoData.TikTokId].nickName;
     }
 
 }

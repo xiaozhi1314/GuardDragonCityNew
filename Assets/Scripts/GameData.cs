@@ -74,4 +74,15 @@ public class GameData
      /// </summary>
      public RVOAgent TargetAgent;
      
+     
+     /// <summary>
+     /// 抖音id
+     /// </summary>
+     public string TikTokId = String.Empty;
+
+     /// <summary>
+     /// 击杀后获得分数 
+     /// </summary>
+     public int Score = 0;
+
 }

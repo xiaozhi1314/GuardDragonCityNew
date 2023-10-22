@@ -15,6 +15,7 @@ public class Root : MonoBehaviour
         RVOManager.Instance.Init();
         WebSocketService.Instance.Init();
         InputManager.Instance.Init();
+        DouYinManager.Instance.Init();
         GameManager.Instance.Init();
     }
 

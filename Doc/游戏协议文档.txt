@@ -1,0 +1,85 @@
+
+
+1000 登陆协议 客户端发起登陆
+1001 礼物通知 服务端主动推送
+1002 结算界面 客户端发起结算通知
+
+1000 登陆协议 客户端发起登陆
+{
+    "cmdType" : 1000, 
+    "data" : {
+        "deviceId": "",
+        "tiktokToken": "",
+    }
+}
+
+{
+    "cmdType" : 1000, 
+    "data" :{
+        "sessionId": "",
+    },
+    "code": 100
+}
+
+1001 礼物通知 服务端主动推送
+{
+    "cmdType" : 1001, 
+    "data" : [
+        {
+            "msgId": "",
+            "msgType":"", // 1 评论 2 点赞 3 礼物
+            "openId": "",
+            "avatarUrl": "",
+            "nickName": "",
+            "camp": "",
+            "soliderId": "",
+            "soliderCount": "",
+        }
+    ],
+    "code": 100
+}
+
+
+1002 结算界面 客户端发起结算通知
+{
+    "cmdType" : 1002, 
+    "data" : {
+        "victory": 1、2,
+        "sourceData": [
+            {
+                "openId": "xxx",
+                "score": 100,
+            }
+        ]
+        }
+    ],
+    "code": 100
+}
+1002 结算界面 客户端发起结算通知
+{
+    "cmdType" : 1002, 
+    "data" : [
+        {
+            "openId": "xxx",
+            "rank": 100,
+            "lastRank": 1000,
+            "victoryCount": 5
+        }
+    ],
+    "code": 100
+}
+
+1003 游戏开始 客户端发起结算通知
+{
+    "cmdType" : 1003, 
+    "data" : [
+        {
+            "sessionId": "xxx"
+        }
+    ],
+    "code": 100
+}
+
+
+id openid score rank lasttime time
+
