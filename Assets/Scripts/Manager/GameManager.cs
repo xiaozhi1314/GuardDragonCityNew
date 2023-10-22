@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.WebSockets;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BigDream
 {
@@ -56,6 +58,8 @@ namespace BigDream
                 {
                     sessionId = m_SessionId
                 });
+                
+                WebSocketService.Instance.OnSendMessage(GameMsg.cmdType.GM, new GameMsg.GmRep(){gmType = 1});
             });
             
             // 添加小兵
@@ -75,7 +79,7 @@ namespace BigDream
         {
             if (openId == string.Empty) return;
             
-            if (m_NoticeMsgDic.ContainsKey(openId) == false)
+            if (m_NoticeMsgDic.ContainsKey(openId))
             {
                 var camp = (Common.CampType)m_NoticeMsgDic[openId].camp;
                 if (m_ScoreDic[camp].ContainsKey(openId) == false)
@@ -85,7 +89,7 @@ namespace BigDream
 
                 m_ScoreDic[camp][openId].score += source;
                 
-                EventManager.Instance.Fire(Common.EventCmd.RankUpdate, new EventParams(Common.EventCmd.NoticeMsg, new Dictionary<string, object>()
+                EventManager.Instance.Fire(Common.EventCmd.RankUpdate, new EventParams(Common.EventCmd.RankUpdate, new Dictionary<string, object>()
                 {
                     {"camp", m_NoticeMsgDic[openId].camp},
                     {"tikTokId", openId},
@@ -100,7 +104,7 @@ namespace BigDream
         /// <param name="noticeMsgRespData"></param>
         public void AddNoticeMsg(GameMsg.NoticeMsgRespData noticeMsgRespData)
         {
-            if (m_NoticeMsgDic.ContainsKey(noticeMsgRespData.openId))
+            if (m_NoticeMsgDic.ContainsKey(noticeMsgRespData.openId) == false)
             {
                 m_NoticeMsgDic.Add(noticeMsgRespData.openId, noticeMsgRespData);
             }
@@ -130,6 +134,32 @@ namespace BigDream
         public List<GameMsg.ResultSourceData> GetRankList(Common.CampType campType)
         {
             return m_ScoreDic[campType].Values.ToList().OrderByDescending(data => data.score).Take(3).ToList();
+        }
+
+        /// <summary>
+        /// 加载网络图片
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="url"></param>
+        public void LoadWebTexture(Image loadImg, string url)
+        {
+            StartCoroutine(WWWGetData(loadImg, url));
+
+        }
+        IEnumerator  WWWGetData(Image loadImg, string url)
+        {
+            WWW www = new WWW(url);//用WWW加载网络图片
+            yield return www;
+            //Myimage = transform.GetComponent<Image>();
+            if (www != null && string.IsNullOrEmpty(www.error))
+            {
+                //获取Texture
+                Texture2D texture = www.texture;
+                //因为我们定义的是Image，所以这里需要把Texture2D转化为Sprite
+                Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                loadImg.sprite = sprite;
+                loadImg.SetNativeSize();
+            }
         }
 
     }

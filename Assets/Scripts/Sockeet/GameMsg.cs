@@ -17,6 +17,7 @@ public class GameMsg
         NoticeMsg,
         Result,
         StartGame,
+        GM = 9999,
     }
 
 
@@ -94,6 +95,12 @@ public class GameMsg
     {
         public string gameId;
     }
+
+    public class GmRep
+    {
+        public int gmType;
+    }
+
 
 }
 

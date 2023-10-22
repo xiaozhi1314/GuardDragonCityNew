@@ -20,17 +20,25 @@ public class PlayerInfo : MonoBehaviour
     /// <summary>
     /// 名字
     /// </summary>
-    public TextMeshProUGUI nameText;
-    void Start()
-    {
-        
-    }
+    public Text nameText;
 
-    public void SetPlayerInfo(PlayerInfoData playerInfoData)
+    public PlayerInfoData playerInfoData;
+
+    public void SetPlayerInfo(PlayerInfoData infoData)
     {
         gameObject.SetActive(true);
-        randText.text = playerInfoData.Index.ToString();
-        nameText.text = GameManager.Instance.m_NoticeMsgDic?[playerInfoData.TikTokId].nickName;
+        if (playerInfoData == null || playerInfoData.TikTokId != infoData.TikTokId)
+        {
+            playerInfoData = infoData;
+            if (GameManager.Instance.m_NoticeMsgDic.ContainsKey(infoData.TikTokId))
+            {
+                var tiktokInfo = GameManager.Instance.m_NoticeMsgDic[infoData.TikTokId];
+                GameManager.Instance.LoadWebTexture(headImage,tiktokInfo.avatarUrl);
+                nameText.text = tiktokInfo.nickName;
+            }
+        }
+        randText.text = (playerInfoData.Index + 1).ToString();
+        
     }
 
 }

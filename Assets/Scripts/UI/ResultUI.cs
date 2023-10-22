@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class ResultUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 展示ui
+    /// </summary>
+    public void Open()
     {
-        
+      //  DOTween.Sequence():Append(transform:DOScale(1, self._rootOpenAnimationDelay):SetEase(Ease.OutBack)
+        //    :OnComplete(function() self:OnOpenOver() end))
+        var delayTime = 0.5f;
+        DOTween.Sequence().Append(transform.DOScale(UnityEngine.Vector3.one, delayTime).SetEase(Ease.OutBack).OnComplete(() =>
+        {
+            OpenCover();
+        }));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenCover()
     {
         
     }

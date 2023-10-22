@@ -29,6 +29,7 @@ namespace BigDream
                 var noticeMsgRespData = (List<GameMsg.NoticeMsgRespData>)e.Objects["Data"];
                 noticeMsgRespData.ForEach(data =>
                 {
+                    GameManager.Instance.AddNoticeMsg(data);
                     RVOManager.Instance.CreateSolider(data.soliderId, data.soliderCount, (Common.CampType)data.camp, data.openId);
                 });
 

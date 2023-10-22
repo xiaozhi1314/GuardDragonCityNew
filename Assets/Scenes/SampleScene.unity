@@ -1529,21 +1529,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 526967490}
     m_Modifications:
+    - target: {fileID: 1192712427089906474, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3217709824806765424, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3217709824806765425, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3217709824806765425, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3217709824806765425, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3217709824806765425, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504110756917498515, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6508420984252688000, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1553,21 +1565,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7691791773934289384, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7691791773934289391, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7691791773934289391, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7691791773934289391, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7691791773934289391, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 7850809390549842374, guid: 59c82b0cd4fedc045b968f17fa82d683, type: 3}
       propertyPath: m_Pivot.x
@@ -4974,6 +4990,8 @@ MonoBehaviour:
     PoolName: 
     ActionType: 0
     TargetAgent: {fileID: 0}
+    TikTokId: 
+    Score: 0
   m_IsDie: 0
   curAttackTime: 0
   curFindTime: 0
@@ -5006,6 +5024,8 @@ MonoBehaviour:
     PoolName: 
     ActionType: 0
     TargetAgent: {fileID: 0}
+    TikTokId: 
+    Score: 0
   m_IsDie: 0
   curAttackTime: 0
   curFindTime: 0

@@ -76,6 +76,8 @@ public class HomeUI : MonoBehaviour
         m_MinSource = new Dictionary<Common.CampType, int>();
         m_MinSource.Add(Common.CampType.Bule,99999999);
         m_MinSource.Add(Common.CampType.Red,99999999);
+
+        playerInfoDic = new Dictionary<Common.CampType, List<PlayerInfo>>();
     }
 
     /// <summary>
