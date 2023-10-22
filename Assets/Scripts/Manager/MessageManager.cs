@@ -67,6 +67,12 @@ namespace BigDream
                 m_ShowNoticeAction.Add(noticeMsgRespData);
                 RunNoticeUiAction();
             }
+            else // 没有动画 的直接出兵
+            {
+                // 创建小兵
+                RVOManager.Instance.CreateSolider(noticeMsgRespData.soliderId, noticeMsgRespData.soliderCount, (Common.CampType)noticeMsgRespData.camp, noticeMsgRespData.openId);
+
+            }
         }
     
         // 执行当前动画
