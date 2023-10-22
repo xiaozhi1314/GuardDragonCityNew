@@ -12781,7 +12781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8395359795060050238
 Transform:
   m_ObjectHideFlags: 0
@@ -12850,9 +12850,11 @@ MonoBehaviour:
     AtkDis: 5
     FindDis: 10
     FindCD: 0.5
+    PoolName: 
     ActionType: 0
     TargetAgent: {fileID: 0}
   m_IsDie: 0
   curAttackTime: 0
   curFindTime: 0
   killCount: 0
+  m_IsInit: 0

@@ -107,11 +107,11 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
                     float x = 0;
                     if (campType == Common.CampType.Red)
                     {
-                        x  =  -90 + i * 3;
+                        x  =  -80 + i * 3;
                     }
                     else
                     {
-                        x=  90 - i * 3;
+                        x=  80 - i * 3;
                     }
     
                     float z = 15 - j * 3;

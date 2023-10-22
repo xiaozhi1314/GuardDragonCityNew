@@ -262,5 +262,15 @@ public class RVOAgent : MonoBehaviour
         
         }
     }
+    // void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireSphere(this.transform.position, m_GameData.FindDis);
+
+
+        
+    //     Gizmos.color = Color.yellow;
+    //     Gizmos.DrawWireSphere(this.transform.position, m_GameData.AtkDis);
+    // }
 
 }
