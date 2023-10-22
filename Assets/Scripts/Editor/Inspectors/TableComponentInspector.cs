@@ -8,6 +8,7 @@
  * descrip:   Table组件编辑器面板定制
  ***************************************************************/
 
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -32,7 +33,7 @@ namespace BigDream
         {
             ExcelTablePath =  Txt.Format("{0}/../Table", Application.dataPath);
             outputJsonPath = Application.dataPath + "/StreamingAssets/Json";
-            allExcelFiles = Directory.GetFiles(ExcelTablePath, "*.xlsm", SearchOption.AllDirectories).ToList();
+            allExcelFiles = Directory.GetFiles(ExcelTablePath, "*.xlsm").Where(file => !System.IO.Path.GetFileName(file).StartsWith("~$", StringComparison.Ordinal)).ToList();
         }
 
         public override void OnInspectorGUI()
