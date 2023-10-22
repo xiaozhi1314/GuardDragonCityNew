@@ -814,7 +814,7 @@ MonoBehaviour:
   m_text: 8888
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e98362aadc72abd44abaa10454b2ba52, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 4555d2fa81d3a0847971714955498a4e, type: 2}
+  m_sharedMaterial: {fileID: 2284931675774883799, guid: e98362aadc72abd44abaa10454b2ba52, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
