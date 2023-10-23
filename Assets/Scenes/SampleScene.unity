@@ -5234,6 +5234,7 @@ MonoBehaviour:
   curFindTime: 0
   killCount: 0
   m_IsInit: 0
+  m_TargetAgentSid: -1
 --- !u!114 &3900852438044930752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5268,6 +5269,7 @@ MonoBehaviour:
   curFindTime: 0
   killCount: 0
   m_IsInit: 0
+  m_TargetAgentSid: -1
 --- !u!95 &3900852438044930753
 Animator:
   serializedVersion: 5

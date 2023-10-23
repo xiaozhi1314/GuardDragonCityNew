@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using RVO;
 using DG.Tweening;
@@ -28,8 +29,26 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
                 Simulator.Instance.delAgent(sid);
             }
         }
-        
     }
+
+    /// <summary>
+    /// 删除所有soldier
+    /// </summary>
+    public void RemoveAllSolider()
+    {
+        leftSoliderAgent.Values.ToList().ForEach(agent =>
+        {
+            PoolManager.Instance.FreeObj(agent.m_GameData.PoolName, agent.gameObject);
+        });
+        
+        rightSoliderAgent.Values.ToList().ForEach(agent =>
+        {
+            PoolManager.Instance.FreeObj(agent.m_GameData.PoolName, agent.gameObject);
+        });
+        leftSoliderAgent.Clear();
+        rightSoliderAgent.Clear();
+    }
+
 
     // 根据sid和阵营获取某个小兵
     public RVOAgent GetSolider(int sid, Common.CampType CampType)

@@ -174,7 +174,7 @@ public class RVOAgent : MonoBehaviour
         curAttackTime = 0;
         if(m_GameData.TargetAgent != null && m_GameData.TargetAgent.CheckIsDie() == false) // 非死亡状态
         {
-            Debug.Log("播放攻击动画 ");
+            //Debug.Log("播放攻击动画 ");
             m_GameData.TargetAgent.SubHp(this, m_GameData.Atk);
 
             if(m_GameData.TargetAgent.GetHp() <= 0) // 血量是0时设置对方已经死亡

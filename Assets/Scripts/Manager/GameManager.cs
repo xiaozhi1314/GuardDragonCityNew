@@ -19,6 +19,7 @@ namespace BigDream
 
         public override void Init()
         {
+            EventManager.Instance.Subscribe(Common.EventCmd.ResetGame, this, ResetGameCallBack);
             m_ScoreDic = new Dictionary<Common.CampType, Dictionary<string, GameMsg.ResultSourceData>>();
             m_NoticeMsgDic = new Dictionary<string, GameMsg.NoticeMsgRespData>();
             // 初始化对象池  
@@ -170,8 +171,27 @@ namespace BigDream
         /// <param name="campType">胜利方阵营</param>
         public void SetGameResult(Common.CampType campType)
         {
+            var lists = new List<GameMsg.ResultSourceData>();
+            m_ScoreDic.Values.ToList().ForEach(resultSourceDataDic => { lists.AddRange(resultSourceDataDic.Values.ToList());});
+            lists = lists.OrderByDescending(data => data.score).ToList(); // 从大到小排序
             GameState = Common.GameState.Result;
-            
+            var resultRep = new GameMsg.ResultRep();
+            resultRep.victory = (int)campType;
+            resultRep.sourceData = lists;
+            WebSocketService.Instance.OnSendMessage(GameMsg.cmdType.Result, resultRep);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="userData"></param>
+        /// <param name="e"></param>
+        public void ResetGameCallBack(object sender = null, object userData = null, EventParams e = null)
+        {
+            GameReset();
+            MessageManager.Instance.Reset();
+            RVOManager.Instance.Reset();
         }
 
     }

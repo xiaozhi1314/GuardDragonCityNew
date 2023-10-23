@@ -16,7 +16,10 @@ public class HomeUI : MonoBehaviour
     /// 我方hp
     /// </summary>
     public Slider redHpSlider;
-
+    
+    /// <summary>
+    /// 我方hp文本
+    /// </summary>
     public TextMeshProUGUI redHpText;
     
     /// <summary>
@@ -37,6 +40,9 @@ public class HomeUI : MonoBehaviour
     public PlayerInfo cloneEnemyPlayerInfo;
 
 
+    /// <summary>
+    /// 当前排行数据
+    /// </summary>
     private Dictionary<Common.CampType, List<PlayerInfo>> playerInfoDic;
     
     /// <summary>
@@ -59,7 +65,7 @@ public class HomeUI : MonoBehaviour
     {
         // 当前初始化主建筑的血量
         var redData =  TableManager.Instance.GetArrayData<TableMasterData>(1);
-        var blueData =  TableManager.Instance.GetArrayData<TableMasterData>(1);
+        var blueData =  TableManager.Instance.GetArrayData<TableMasterData>(2);
         EventManager.Instance.Fire(Common.EventCmd.SubBuildHp, new EventParams(Common.EventCmd.SubBuildHp, new Dictionary<string, object>()
         {
             {"CampType", Common.CampType.Red},

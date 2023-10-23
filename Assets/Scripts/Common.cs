@@ -14,7 +14,7 @@ public class Common
     public enum TargetType
     {
         None,               // none
-        Solider,            // С??
+        Solider,            // ????
         BigSolider,         // ???
         Build,              // ????
     }
@@ -46,20 +46,21 @@ public class Common
     public enum EventCmd
     {
         None,
-        NoticeMsg,              // 服务器出兵通知
-        ResetGame,             // 重启游戏
-        SubBuildHp,             // 建筑减血
-        RankUpdate,            // 排名更新
+        NoticeMsg,              // ????????????
+        ResetGame,             // ???????
+        SubBuildHp,             // ???????
+        RankUpdate,            // ????????
     }
 
     public enum Constance
     {
-        AttackDis = 0,          // 攻击间隔
-        DefaultCreateCount,     // 默认创建数量
+        AttackDis = 0,          // 出兵间隔
+        DefaultCreateCount,     // 默认出兵数量
+        RVOTimeStep,            // RVO的时间间隔
     }
 
     /// <summary>
-    /// 怪物数据
+    /// ????????
     /// </summary>
     public class MasterData
     {
@@ -103,7 +104,7 @@ public class Common
 public class PlayerInfoData
 {
     /// <summary>
-    /// 当前所在下表
+    /// ???????????
     /// </summary>
     public int Index ;
     

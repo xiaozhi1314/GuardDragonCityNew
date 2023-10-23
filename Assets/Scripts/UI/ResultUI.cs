@@ -77,14 +77,7 @@ public class ResultUI : MonoBehaviour
         }));
     }
 
-    /// <summary>
-    /// 关闭结束回调
-    /// </summary>
-    private void CloseCover()
-    {
-        
-        
-    }
+
     
     /// <summary>
     /// 打开结束的ui回调
@@ -92,6 +85,19 @@ public class ResultUI : MonoBehaviour
     private void OpenCover()
     {
         
+    }
+    
+    /// <summary>
+    /// 关闭结束回调
+    /// </summary>
+    private void CloseCover()
+    {
+        // 重启游戏
+        EventManager.Instance.Fire(Common.EventCmd.ResetGame, new EventParams(Common.EventCmd.ResetGame, new Dictionary<string, object>()
+        {
+          
+        }));
+
     }
 
     public void OnCloseButton()

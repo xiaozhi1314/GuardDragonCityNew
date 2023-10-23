@@ -13,16 +13,27 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
 
     public override void Init()
     {
-        Simulator.Instance.setTimeStep(0.25f);
+        Reset();
+    }
 
+
+    public void Reset()
+    {
+        Simulator.Instance.Clear();
+        Simulator.Instance.setTimeStep(TableManager.Instance.GetArrayData<TableConstanceData>((int)Common.Constance.RVOTimeStep).Value);
+        RemoveAllSolider();
         SetAgentDefaults(Common.TargetType.Build);
         InitBuild(1, RedBuildAgent, Common.CampType.Red, Common.CampType.Bule);
         InitBuild(2, BlueBuildAgent, Common.CampType.Bule, Common.CampType.Red);
+        
+        
     }
+
 
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.GameState != Common.GameState.Playing) return;
         Simulator.Instance.doStep();
     }
     
@@ -49,11 +60,11 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
             if (index % 2 == 0)
             {
                 CreateSolider( 4, DefaultCreateCount, Common.CampType.Bule);
-                CreateSolider( 3, DefaultCreateCount, Common.CampType.Red);
+                //CreateSolider( 3, DefaultCreateCount, Common.CampType.Red);
             }
             else
             {
-                CreateSolider( 3, DefaultCreateCount, Common.CampType.Red);
+                //CreateSolider( 3, DefaultCreateCount, Common.CampType.Red);
                 CreateSolider( 4, DefaultCreateCount, Common.CampType.Bule);
             }
 
