@@ -23,7 +23,7 @@ public class RVOAgentBigSolider : RVOAgent
     {
             if (m_GameData.ActionType == Common.ActionType.Find) // AI寻路
             {
-                m_GameData.TargetAgent = RVOManager.Instance.GetBuildSolider(m_GameData.EmtpyCampType);
+                SetTargetAgent(RVOManager.Instance.GetBuildSolider(m_GameData.EmtpyCampType));
                 ChangeToMoveAction();
             }
             else if (m_GameData.ActionType == Common.ActionType.Move) // 移动

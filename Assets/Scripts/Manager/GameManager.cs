@@ -164,5 +164,15 @@ namespace BigDream
             }
         }
 
+        /// <summary>
+        /// 游戏进行结算
+        /// </summary>
+        /// <param name="campType">胜利方阵营</param>
+        public void SetGameResult(Common.CampType campType)
+        {
+            GameState = Common.GameState.Result;
+            
+        }
+
     }
 }

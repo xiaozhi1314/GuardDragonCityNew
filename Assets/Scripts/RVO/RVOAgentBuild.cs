@@ -13,10 +13,8 @@ public class RVOAgentBuild : RVOAgent
     // 设置小兵死亡
     public override void SetDie()
     {
-        // 建筑死亡则进行结算
-        GameManager.Instance.GameState = Common.GameState.Result;
-
         Debug.Log("播放死亡动画");
+        GameManager.Instance.SetGameResult(m_GameData.EmtpyCampType);
     }
     
 

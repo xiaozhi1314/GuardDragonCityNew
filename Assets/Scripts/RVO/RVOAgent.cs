@@ -36,6 +36,8 @@ public class RVOAgent : MonoBehaviour
 
     public bool m_IsInit = false;
 
+    public int m_TargetAgentSid = -1;
+
 
     public virtual void Proc() { }
     public virtual void SetDie() { }
@@ -48,6 +50,7 @@ public class RVOAgent : MonoBehaviour
         curAttackTime = 0;
         curFindTime = 0;
         killCount = 0;
+        m_TargetAgentSid = -1;
     }
 
     /// <summary>
@@ -75,6 +78,14 @@ public class RVOAgent : MonoBehaviour
     {
         if (GameManager.Instance.GameState != Common.GameState.Playing) return;
         if (m_IsDie || m_IsInit == false) return;
+        if (m_GameData != null && m_GameData.TargetAgent != null && m_GameData.ActionType != Common.ActionType.Find)
+        {
+            if (m_TargetAgentSid != m_GameData.TargetAgent.m_GameData.Sid) // 如果发现sid不一致，则重置寻找逻辑
+            {
+                m_GameData.ActionType = Common.ActionType.Find;
+            }
+        }
+
         Proc();
         
     }
@@ -89,7 +100,7 @@ public class RVOAgent : MonoBehaviour
             // 当打我的人在我的攻击范围内，且我自己还处于移动状态，则直接进行对战状态
             if ((m_GameData.ActionType == Common.ActionType.Move || m_GameData.ActionType == Common.ActionType.Find) && Vector3.Distance(rVOAgent.transform.position, transform.position) <= m_GameData.AtkDis)
             {
-                m_GameData.TargetAgent = rVOAgent;
+                SetTargetAgent(rVOAgent);
                 ChangeToAttackAction();
             }
         }
@@ -214,11 +225,12 @@ public class RVOAgent : MonoBehaviour
 
             if(target != null)
             {
-                m_GameData.TargetAgent = target;
+                SetTargetAgent(target);
             }
             if(RVOManager.Instance.GetSoliderCount(m_GameData.EmtpyCampType) == 0) // 敌方小兵全部死亡
             {
-                m_GameData.TargetAgent = RVOManager.Instance.GetBuildSolider(m_GameData.EmtpyCampType); // 直接寻路敌方基地
+               var buildTargetAgent = RVOManager.Instance.GetBuildSolider(m_GameData.EmtpyCampType); // 直接寻路敌方基地
+                SetTargetAgent(buildTargetAgent);
             }
 
         }
@@ -255,12 +267,19 @@ public class RVOAgent : MonoBehaviour
 
             if(target != null)
             {
-                m_GameData.TargetAgent = target;
+                SetTargetAgent(target);
                 ChangeToAttackAction();
             }
         
         }
     }
+
+    public void SetTargetAgent(RVOAgent target)
+    {
+        m_GameData.TargetAgent = target;
+        m_TargetAgentSid = target.m_GameData.Sid;
+    }
+
     // void OnDrawGizmos()
     // {
     //     Gizmos.color = Color.red;
