@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: T_WenLi_021
+  m_Shader: {fileID: 4800000, guid: 20a22b79a8ce31d45bb6355873c00acb, type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DissolveTex:
+        m_Texture: {fileID: 2800000, guid: 7477992337d8b004281ed128af83c484, type: 3}
+        m_Scale: {x: 1.5, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 2800000, guid: 1a03a40470a2ce34290fa2b2980c7e52, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: e328b6ea503473c4792b394f5e11617c, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Dissolve: 0.12
+    - _DissolveIntensity: 0.498
+    - _DissolveRange: 2.12
+    - _Dissolve_Speed_X: 0.03
+    - _Dissolve_Speed_Y: 0.49
+    - _Float0: -0.3
+    - _Float1: 1
+    - _Float2: 0.35
+    - _Float3: 0.56
+    - _NoiseIntensity: 0.09
+    - _Noise_Speed_U: 0.36
+    - _Noise_Speed_V: 0.59
+    - _QiangDu: 0.13
+    - _SoftDissolve: 0.2
+    - _USpeed: 0.03
+    - _VSpeed: 0.69
+    - _XSpeed: 0
+    - _YSpeed: 0.19
+    m_Colors: []
+  m_BuildTextureStacks: []

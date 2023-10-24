@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: T_YanWu_009
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _MAINTEXLIGHTAFFECTALPHA_ON _NOISEUVROLLUSETIME_ON _SECONDTEXLIGHTAFFECTALPHA_ON
+    _USEEXPOSUREFX_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DissolveMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: f543621593d924dc8b2d4f0a20df0d36, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTexFlowmap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SecondTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _VertexAnimTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AddMulti: 0
+    - _AlphaPremulti: 0
+    - _Blend: 10
+    - _CircleMask: 0.45
+    - _Cull: 0
+    - _DissolveControl: 0
+    - _DissolveCustom: 0
+    - _DissolveIntensity: 1
+    - _Frequency: 1
+    - _FresnelColorLight: 1
+    - _FresnelSideA: 0
+    - _FresnelSideB: 1
+    - _InvFade: 1
+    - _MainCustom: 0
+    - _MainCustomTiling: 0
+    - _MainTexAlphaPower: 1
+    - _MainTexFlowmapControl: 1
+    - _MainTexFlowmapCustom: 0
+    - _MainTexLight: 1
+    - _MainTexLightAffectAlpha: 1
+    - _MainTexQuarterUV: 0
+    - _MaskForTex2: 0
+    - _MaskIntensity: 1
+    - _MaskPolarUV: 0
+    - _MaskPolarUVCustom: 0
+    - _MaskPolarUVCustomTiling: 0
+    - _NoiseMulti: 0
+    - _NoisePolarUScale: 1
+    - _NoisePolarUV: 0
+    - _NoisePolarUVScale: 1
+    - _NoiseUVRollUseTime: 1
+    - _PolarMaskControl: 5
+    - _PolarMaskDirection: 0
+    - _PolarMaskSmoothSide: 1
+    - _SecondCustom: 0
+    - _SecondTexLight: 1
+    - _SecondTexLightAffectAlpha: 1
+    - _SecondTexPolarUScale: 1
+    - _SecondTexPolarUV: 0
+    - _SecondTexPolarUVScale: 1
+    - _SecondTexQuarterUV: 0
+    - _SideTransControl: 0
+    - _StrengthenY: 0
+    - _UseCircleMask: 0
+    - _UseCustom: 0
+    - _UseExposureFX: 1
+    - _UseFlowmap: 0
+    - _UseFresnel: 0
+    - _UsePolarMask: 0
+    - _VATScale: 0
+    - _VATScaleCustom: 0
+    - _WaveDirection: 0
+    - _WaveScale: 0
+    - _WaveScaleCustom: 0
+    - _WaveSpeed: 0
+    - _ZWrite0: 0
+    - _rotation: 0
+    m_Colors:
+    - _DistanceRange: {r: 3, g: 8, b: 0, a: 0}
+    - _FresnelColor: {r: 0, g: 1, b: 0, a: 1}
+    - _MainTexColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MaskUVRoll: {r: 0, g: 0, b: 0, a: 0}
+    - _NoiseUVRoll: {r: 0, g: 0, b: 0, a: 0}
+    - _SecondTexColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TexUVRoll: {r: 0, g: 0, b: 0, a: 0}
+    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+    - _VATUVRoll: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
