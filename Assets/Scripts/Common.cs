@@ -50,13 +50,14 @@ public class Common
         ResetGame,             // ???????
         SubBuildHp,             // ???????
         RankUpdate,            // ????????
+        RankResult,
     }
 
     public enum Constance
     {
-        AttackDis = 0,          // 出兵间隔
-        DefaultCreateCount,     // 默认出兵数量
-        RVOTimeStep,            // RVO的时间间隔
+        AttackDis = 0,          // ???????
+        DefaultCreateCount,     // ??????????
+        RVOTimeStep,            // RVO???????
     }
 
     /// <summary>
@@ -97,6 +98,11 @@ public class Common
     public static void SError(string msg)
     {
         Debug.LogError(msg);
+    }
+
+    public class DOTweenString
+    {
+        public static string NoticeUIDelayString = "NoticeUIDelayString";
     }
 }
 

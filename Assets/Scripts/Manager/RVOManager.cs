@@ -64,7 +64,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
             }
             else
             {
-                //CreateSolider( 3, DefaultCreateCount, Common.CampType.Red);
+               // CreateSolider( 3, DefaultCreateCount, Common.CampType.Red);
                 CreateSolider( 4, DefaultCreateCount, Common.CampType.Bule);
             }
 

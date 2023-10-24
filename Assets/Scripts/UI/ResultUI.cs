@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using BigDream;
 using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +28,12 @@ public class ResultUI : MonoBehaviour
     /// </summary>
     public void Open(List<GameMsg.ResultSourceData> sourceData)
     {
+
+        if (m_LoadRankItemInfo.Count == 0)
+        {
+            m_LoadRankItemInfo.AddRange(m_RankItemInfo);
+        }
+
         var delayTime = 0.5f;
         gameObject.SetActive(true);
         m_MashImageLayer.gameObject.SetActive(true);
@@ -35,33 +43,29 @@ public class ResultUI : MonoBehaviour
             m_MashImageLayer.gameObject.SetActive(false);
             OpenCover();
         }));
+        
 
         var count = m_LoadRankItemInfo.Count;
-        for (int idx = 3 + count; idx < sourceData.Count; idx++)
+        for (int idx = count; idx < sourceData.Count; idx++)
         {
             var cloneGameObject = Instantiate(m_CloneRankItemInfo.gameObject, m_CloneRankItemInfo.transform.parent, false);
+            cloneGameObject.gameObject.SetActive(true);
             m_LoadRankItemInfo.Add(cloneGameObject.GetComponent<RankItemInfo>());
         }
 
-        for (int idx = sourceData.Count - 3; idx < m_LoadRankItemInfo.Count; idx++)
+        for (int idx = sourceData.Count; idx < m_LoadRankItemInfo.Count; idx++)
         {
-            m_LoadRankItemInfo[idx].gameObject.SetActive(false);
-        }
-
-        // 1到3名
-        for (int idx = 0; idx < 3; idx++)
-        {
-            var tikTokInfo = GameManager.Instance.m_NoticeMsgDic[sourceData[idx].openId];
-            m_RankItemInfo[idx].UpdateInfo(idx, tikTokInfo.avatarUrl, tikTokInfo.nickName, sourceData[idx].score, 0, 0);
-        }
-
-        // 4到无限
-        for (int idx = 3; idx < sourceData.Count; idx++)
-        {
-            var tikTokInfo = GameManager.Instance.m_NoticeMsgDic[sourceData[idx].openId];
-            m_RankItemInfo[idx].UpdateInfo(idx, tikTokInfo.avatarUrl, tikTokInfo.nickName, sourceData[idx].score, 0, 0);
+            m_LoadRankItemInfo[idx].gameObject.SetActive(true);
         }
         
+
+        // 4到无限
+        for (int idx = 0; idx < sourceData.Count; idx++)
+        {
+            
+            var tikTokInfo = GameManager.Instance.m_NoticeMsgDic[sourceData[idx].openId];
+            m_LoadRankItemInfo[idx].UpdateInfo(idx, tikTokInfo.avatarUrl, tikTokInfo.nickName, sourceData[idx].score, 0, 0);
+        }
         
     }
 

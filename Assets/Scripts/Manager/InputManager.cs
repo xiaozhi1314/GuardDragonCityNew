@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Unity.VisualScripting;
@@ -25,6 +26,34 @@ namespace BigDream
             {
                 Debug.Log("A");
             }
+            else if(Input.GetKeyUp(KeyCode.Q))
+            {
+                if (GameManager.Instance.m_ScoreDic[Common.CampType.Red].Count > 0)
+                {
+                    var firstTikTokInfo = GameManager.Instance.m_ScoreDic[Common.CampType.Red].Values.ToList().First();
+                    EventManager.Instance.Fire(Common.EventCmd.RankUpdate, new EventParams(Common.EventCmd.RankUpdate, new Dictionary<string, object>()
+                    {
+                        {"camp", Common.CampType.Red},
+                        {"tikTokId", firstTikTokInfo.openId},
+                        {"source", 1000}
+                    }));
+                }
+            }
+            
+            else if(Input.GetKeyUp(KeyCode.W))
+            {
+                if (GameManager.Instance.m_ScoreDic[Common.CampType.Bule].Count > 0)
+                {
+                    var firstTikTokInfo = GameManager.Instance.m_ScoreDic[Common.CampType.Bule].Values.ToList().First();
+                    EventManager.Instance.Fire(Common.EventCmd.RankUpdate, new EventParams(Common.EventCmd.RankUpdate, new Dictionary<string, object>()
+                    {
+                        {"camp", Common.CampType.Bule},
+                        {"tikTokId", firstTikTokInfo.openId},
+                        {"source", 10000}
+                    }));
+                }
+            }
+
         }
     }
 }

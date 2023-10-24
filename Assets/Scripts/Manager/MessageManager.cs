@@ -10,30 +10,54 @@ namespace BigDream
 {
     public class MessageManager : MonoSingleton<MessageManager>
     {
-        // 当前显示的动画队列
-        private List<GameMsg.NoticeMsgRespData> m_ShowNoticeAction;
-        // 当前是否正在显示动画
-        private bool m_isShowActioning = false;
-
+        
         /// <summary>
         /// 消息的父节点
         /// </summary>
-        private GameObject m_messageParent = null;
+        public GameObject m_messageParent = null;
+        /// <summary>
+        /// 控制器
+        /// </summary>
+        public List<NoticeControl> m_NoticeControl;
+
+        /// <summary>
+        /// 主界面
+        /// </summary>
+        public HomeUI m_HomeeUI;
+
+        
+        /// <summary>
+        /// 结算界面
+        /// </summary>
+        public ResultUI m_ResultUI;
+
+        // 当前显示的动画队列
+        private List<GameMsg.NoticeMsgRespData> m_ShowNoticeAction;
+        
+        // 当前是否正在显示动画 
+        private bool m_isShowActioning = false;
+        
         
         public override void Init()
         {
             // 服务器消息通知
             EventManager.Instance.Subscribe(Common.EventCmd.NoticeMsg, this, AddMasterCallBack);
-            m_ShowNoticeAction = new List<GameMsg.NoticeMsgRespData>();
-            m_messageParent = GameObject.Find("MessageUI");
-
+            
+            // UI击杀消息
+            EventManager.Instance.Subscribe(Common.EventCmd.RankUpdate, this, RankUpdateCallBack);
+            
+            
+            // UI击杀消息
+            EventManager.Instance.Subscribe(Common.EventCmd.RankResult, this, RankResultCallBack);
+            
+            Reset();
         }
 
         public void Reset()
         {
-            m_ShowNoticeAction.Clear();
+            m_ShowNoticeAction = new List<GameMsg.NoticeMsgRespData>();
         }
-
+        
         
         /// <summary>
         /// 添加兵种的回调 
@@ -83,7 +107,9 @@ namespace BigDream
             ShowNextAction();
         }
 
-        // 设置下一个action
+        /// <summary>
+        /// 设置下一个action
+        /// </summary>
         public void ShowNextAction()
         {
             if (m_ShowNoticeAction.Count == 0)
@@ -117,13 +143,40 @@ namespace BigDream
                 });   
                 
             }
-
-            
-            
         }
 
 
-
+        /// <summary>
+        /// 击杀更新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="userData"></param>
+        /// <param name="e"></param>
+        public void RankUpdateCallBack(object sender = null, object userData = null, EventParams e = null)
+        {
+            if (e != null && e.Objects.ContainsKey("camp"))
+            {
+                int camp = (int)e.Objects["camp"];
+                string tikTokId = (string)e.Objects["tikTokId"];
+                int source = (int)e.Objects["source"];
+                m_NoticeControl[camp].AddNotice(new GameMsg.ResultSourceData(){openId = tikTokId, score = source});
+            }
+        }
+        
+        /// <summary>
+        /// 结算结果页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="userData"></param>
+        /// <param name="e"></param>
+        public void RankResultCallBack(object sender = null, object userData = null, EventParams e = null)
+        {
+            if (e != null && e.Objects.ContainsKey("Data"))
+            {
+                var result =  (List<GameMsg.ResultRespIteme>)e.Objects["Data"];
+            }
+        }
+        
 
     }
 }

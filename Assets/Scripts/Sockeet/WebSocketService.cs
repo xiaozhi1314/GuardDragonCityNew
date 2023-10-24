@@ -130,7 +130,12 @@ public class WebSocketService : MonoSingleton<WebSocketService>
             } 
             case GameMsg.cmdType.Result:
             {
-                var resultRespIteme = jToken.ToObject<GameMsg.ResultRespIteme>();
+                var resultRespIteme = jToken.ToObject<List<GameMsg.ResultRespIteme>>();
+                EventManager.Instance.Fire(Common.EventCmd.RankResult, new EventParams(Common.EventCmd.NoticeMsg,new Dictionary<string, object>()
+                {
+                    {"Data" , resultRespIteme},
+                }));
+                
                 break;
             } 
             default:

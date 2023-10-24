@@ -15,13 +15,14 @@ namespace BigDream
         public string m_SessionId = string.Empty;
         public Dictionary<Common.CampType,Dictionary<string, GameMsg.ResultSourceData> > m_ScoreDic;
         public Dictionary<string, GameMsg.NoticeMsgRespData> m_NoticeMsgDic;
-
+        public Dictionary<string, Sprite> m_LoadSprite;
 
         public override void Init()
         {
             EventManager.Instance.Subscribe(Common.EventCmd.ResetGame, this, ResetGameCallBack);
             m_ScoreDic = new Dictionary<Common.CampType, Dictionary<string, GameMsg.ResultSourceData>>();
             m_NoticeMsgDic = new Dictionary<string, GameMsg.NoticeMsgRespData>();
+            m_LoadSprite = new Dictionary<string, Sprite>();
             // 初始化对象池  
             TableManager.Instance.GetArrayDatasGroup<TableMasterData>().Values.ToList().ForEach(masterDataObject =>
             {
@@ -146,8 +147,16 @@ namespace BigDream
         /// <param name="url"></param>
         public void LoadWebTexture(Image loadImg, string url)
         {
-            StartCoroutine(WWWGetData(loadImg, url));
 
+            if (m_LoadSprite.ContainsKey(url))
+            {
+                loadImg.sprite = m_LoadSprite[url];
+                loadImg.SetNativeSize();
+            }
+            else
+            {
+                StartCoroutine(WWWGetData(loadImg, url));
+            }
         }
         IEnumerator  WWWGetData(Image loadImg, string url)
         {
@@ -162,6 +171,7 @@ namespace BigDream
                 Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
                 loadImg.sprite = sprite;
                 loadImg.SetNativeSize();
+                m_LoadSprite[url] = sprite;
             }
         }
 
@@ -173,12 +183,20 @@ namespace BigDream
         {
             var lists = new List<GameMsg.ResultSourceData>();
             m_ScoreDic.Values.ToList().ForEach(resultSourceDataDic => { lists.AddRange(resultSourceDataDic.Values.ToList());});
+            for (int idx = 0; idx < 6; idx++)
+            {
+                lists.AddRange(lists);
+            }
+            
             lists = lists.OrderByDescending(data => data.score).ToList(); // 从大到小排序
             GameState = Common.GameState.Result;
             var resultRep = new GameMsg.ResultRep();
             resultRep.victory = (int)campType;
             resultRep.sourceData = lists;
-            WebSocketService.Instance.OnSendMessage(GameMsg.cmdType.Result, resultRep);
+            //WebSocketService.Instance.OnSendMessage(GameMsg.cmdType.Result, resultRep);
+            
+            MessageManager.Instance.m_ResultUI.Open(lists);
+            
         }
 
         /// <summary>
