@@ -20,13 +20,13 @@ public class HomeUI : MonoBehaviour
     /// <summary>
     /// 我方hp文本
     /// </summary>
-    public TextMeshProUGUI redHpText;
+    public Text redHpText;
     
     /// <summary>
     /// 敌方血量
     /// </summary>
     public Slider buleHpSlider;
-    public TextMeshProUGUI buleHpText;
+    public Text buleHpText;
 
 
     /// <summary>
@@ -167,7 +167,7 @@ public class HomeUI : MonoBehaviour
 
     }
 
-    public void UpdateHpInfo(Slider slider, TextMeshProUGUI textMeshProUGUI, int hp, int maxHp, bool isAction)
+    public void UpdateHpInfo(Slider slider, Text textMeshProUGUI, int hp, int maxHp, bool isAction)
     {
         if (isAction)
         {

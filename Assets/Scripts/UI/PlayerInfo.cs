@@ -15,7 +15,7 @@ public class PlayerInfo : MonoBehaviour
     /// <summary>
     /// 排名 
     /// </summary>
-    public TextMeshProUGUI randText;
+    public Text randText;
     
     /// <summary>
     /// 名字
