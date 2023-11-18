@@ -38,6 +38,13 @@ public class RVOAgent : MonoBehaviour
 
     public int m_TargetAgentSid = -1;
 
+    private Animator m_playAnimator;
+
+    public void Awake()
+    {
+        m_playAnimator = GetComponent<Animator>();
+    }
+
 
     public virtual void Proc() { }
     public virtual void SetDie() { }
@@ -115,6 +122,7 @@ public class RVOAgent : MonoBehaviour
    public void ChangeToMoveAction()
    {
         m_GameData.ActionType = Common.ActionType.Move;
+        SetTrigger(Common.AnimationName.Run);
    }
 
     // 士兵移动
@@ -162,6 +170,7 @@ public class RVOAgent : MonoBehaviour
     {
 
         m_GameData.ActionType = Common.ActionType.Attack;
+        SetTrigger(Common.AnimationName.Attack);
         Simulator.Instance.setAgentPrefVelocity(m_GameData.Sid, new RVO.Vector2(0.0f, 0.0f));
         curAttackTime = 0;
     }
@@ -278,6 +287,14 @@ public class RVOAgent : MonoBehaviour
     {
         m_GameData.TargetAgent = target;
         m_TargetAgentSid = target.m_GameData.Sid;
+    }
+
+    public void SetTrigger(Common.AnimationName animationName)
+    {
+        if (m_playAnimator)
+        {
+            m_playAnimator.SetTrigger(animationName.ToString());
+        }
     }
 
     // void OnDrawGizmos()

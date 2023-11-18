@@ -32,6 +32,15 @@ public class Common
         Die,
         Attack
     }
+    
+    public enum AnimationName
+    {
+        Idle ,
+        Run,
+        Attack,
+        Vectory,
+        Die,
+    }
 
     public struct AIAction{
         public CampType camp;

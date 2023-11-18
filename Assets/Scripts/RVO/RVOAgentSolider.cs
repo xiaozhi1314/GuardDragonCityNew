@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using BigDream;
+using DG.Tweening;
 using DG.Tweening.Plugins.Options;
 using RVO;
 using Unity.VisualScripting;
@@ -15,7 +16,10 @@ public class RVOAgentSolider : RVOAgent
     public override void SetDie()
     {
         RVOManager.Instance.RemoveSolider(m_GameData.Sid, m_GameData.CampType);
-        PoolManager.Instance.FreeObj(m_GameData.PoolName, gameObject);
+        
+        SetTrigger(Common.AnimationName.Die);
+        DOTween.Sequence().AppendInterval(2.0f).AppendCallback(() => { PoolManager.Instance.FreeObj(m_GameData.PoolName, gameObject); }).stringId = "RVOAgentSolider" + gameObject.GetInstanceID();
+
         // Debug.Log("播放死亡动画");
     }
 
