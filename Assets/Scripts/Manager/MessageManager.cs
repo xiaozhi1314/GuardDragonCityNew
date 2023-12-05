@@ -129,6 +129,7 @@ namespace BigDream
                 
                 var showAction  = PoolManager.Instance.GetObj(masterData.PoolName + "Notice", m_messageParent.transform,UnityEngine.Vector3.zero);
                 showAction.transform.localPosition = Vector3.zero;
+                showAction.transform.localEulerAngles = Vector3.zero;
                 showAction.transform.localScale =  UnityEngine.Vector3.zero;
                 showAction.SetActive(true);
                 // 从小到大时间
