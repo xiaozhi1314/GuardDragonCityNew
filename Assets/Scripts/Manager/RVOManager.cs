@@ -69,7 +69,7 @@ public sealed partial class RVOManager : MonoSingleton<RVOManager>
             }
 
       
-        }).SetLoops(200);
+        }).SetLoops(20);
     }
 
     public void AutoCreateBigSolider()
